@@ -23,25 +23,36 @@ public class JumpingManGame extends JPanel implements KeyListener {
   private int manX = 50;
   private int manY = GROUND_HEIGHT - MAN_HEIGHT;
 
+  public JumpingManGame() {
+    JFrame frame = new JFrame("Jumping Man Game");
+    frame.addKeyListener(this);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setSize(1550, 1200);
+    frame.add(this);
+    frame.setVisible(true);
+  }
 
   public void paint(Graphics g) {
     g.setColor(Color.BLACK);
     g.fillRect(0, 0, 1550, 1200);;
 
     g.setColor(Color.PINK);
-    g.fillRect(0, 150, 1350, HEIGHT - GROUND_HEIGHT);
+    g.fillRect(200, 440, 1350, 25);
     
     g.setColor(Color.PINK);
-    g.fillRect(0, 350, 1350, HEIGHT - GROUND_HEIGHT);
+    g.fillRect(0, 550, 1350, 25);
     
     g.setColor(Color.PINK);
-    g.fillRect(0, 750, 1550, HEIGHT - GROUND_HEIGHT);
+    g.fillRect(0, 770, 1550, 25);
     
     g.setColor(Color.PINK);
-    g.fillRect(200, 550, 1350, HEIGHT - GROUND_HEIGHT);
+    g.fillRect(200, 660, 1350, 25);
     
     g.setColor(Color.PINK);
-    g.fillRect(0, 100, WIDTH, HEIGHT - GROUND_HEIGHT);
+    g.fillRect(0, 330, WIDTH, 25);
+    
+    g.setColor(Color.PINK);
+    g.fillRect(0, 220, WIDTH, 25);
 
     g.setColor(Color.WHITE);
     g.fillRect(manX, manY, MAN_WIDTH, MAN_HEIGHT);
