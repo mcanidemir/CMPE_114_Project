@@ -23,14 +23,7 @@ public class JumpingManGame extends JPanel implements KeyListener {
   private int manX = 50;
   private int manY = GROUND_HEIGHT - MAN_HEIGHT;
 
-  public JumpingManGame() {
-    JFrame frame = new JFrame("Jumping Man Game");
-    frame.addKeyListener(this);
-    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    frame.setSize(1550, 1200);
-    frame.add(this);
-    frame.setVisible(true);
-  }
+
 
   public void paint(Graphics g) {
     g.setColor(Color.BLACK);
