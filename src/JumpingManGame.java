@@ -33,23 +33,25 @@ public class JumpingManGame extends JPanel implements KeyListener {
   }
 
   public void paint(Graphics g) {
-    g.setColor(Color.BLACK);
-    g.fillRect(0, 0, 1550, 1200);;
+    
 
     g.setColor(Color.PINK);
-    g.fillRect(200, 440, 1350, 25);
+    g.fillRect(200, 395, 1350, 25);
     
     g.setColor(Color.PINK);
-    g.fillRect(0, 550, 1350, 25);
+    g.fillRect(0, 520, 1350, 25);
     
     g.setColor(Color.PINK);
     g.fillRect(0, 770, 1550, 25);
     
     g.setColor(Color.PINK);
-    g.fillRect(0, 330, WIDTH, 25);
+    g.fillRect(200, 645, 1350, 25);
     
     g.setColor(Color.PINK);
-    g.fillRect(0, 220, WIDTH, 25);
+    g.fillRect(0, 270, 1350, 25);
+    
+    g.setColor(Color.PINK);
+    g.fillRect(100, 145, WIDTH, 25);
 
     g.setColor(Color.WHITE);
     g.fillRect(manX, manY, MAN_WIDTH, MAN_HEIGHT);
