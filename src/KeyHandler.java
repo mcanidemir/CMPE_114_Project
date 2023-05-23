@@ -4,19 +4,19 @@ import java.awt.event.KeyListener;
 public class KeyHandler implements KeyListener{
 
 		public boolean W_pressed, A_pressed, D_pressed;
+
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
+		//boolean jumping;
 		
 	}
-	boolean jumping;
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
 		int input = e.getKeyCode();
-		if(input==KeyEvent.VK_W) {
-			W_pressed=true;
-			jumping = true;
+		if(input==KeyEvent.VK_W ) {
+                W_pressed = true;
 			}
 		
 		if(input==KeyEvent.VK_D) {

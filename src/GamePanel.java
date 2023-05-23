@@ -16,6 +16,8 @@ public class GamePanel extends JPanel implements Runnable{
 		final int ScreenWidth = 1500;
 		final int ScreenHeight = 800;
 		
+
+		
 		
 		int FPS=60;
 		
@@ -24,7 +26,9 @@ public class GamePanel extends JPanel implements Runnable{
 		
 		int playerX=1400;
 		int playerY=700;
-		int playerSpeed=5;
+		int playerSpeed_Left=5;
+		int playerSpeed_Right=5;
+		int playerSpeed_Up=10;
 		
 		public GamePanel() {
 			
@@ -66,39 +70,42 @@ public class GamePanel extends JPanel implements Runnable{
 		
 		public void update() {
 			if(KeyH.A_pressed==true) {
-				playerX -= playerSpeed;
+				playerX -= playerSpeed_Left;
 			}
 		
 			if(KeyH.D_pressed==true) {
-				playerX += playerSpeed;
+				playerX += playerSpeed_Right;
 			}
 			
 			if(KeyH.W_pressed==true) {
-				playerY -= playerSpeed;
+				playerY -= playerSpeed_Up;
 			}
-		 
-			
-			 if (playerY < 725 && playerY > 595) {
-		           playerY += 1;
-		       } 
-			 else if(playerY < 595 && playerY > 465){
-				 playerY += 1;
-		        }
-			 else if(playerY < 465 && playerY > 335){
-				 playerY += 1;
-		        }
-			 else if(playerY < 335 && playerY > 205){
-				 playerY += 1;
-		        }
-			 else if(playerY < 205 && playerY > 75){
-				 playerY += 1;
-		        }
-			 else if(playerY < 75 && playerY > 0){
-				 playerY += 1;
-		        }
-			 else if(playerY == 725 || playerY == 565 || playerY == 465 || playerY == 335 || playerY == 205 || playerY == 75) {
+		
+			if(playerY == 725 || (playerY == 595 && playerX >= 110 && playerX <= 1500) ||
+			         (playerY == 465 && playerX >= 0 && playerX <= 1350) ||
+			         (playerY == 335 && playerX >= 110 && playerX <= 1500) ||
+			         (playerY == 205 && playerX >= 0 && playerX <= 1350) ||
+			         (playerY == 75 && playerX >= 180&& playerX <= 570)) {
 				 playerY += 0;
+
 			 }
+			else {
+				playerY+=5;
+			}
+			
+			if(playerX==0) {
+				playerSpeed_Left=0;
+			}
+			else {
+				playerSpeed_Left=5;
+			}
+			
+			if(playerX==1450) {
+				playerSpeed_Right=0;
+			}
+			else {
+				playerSpeed_Right=5;
+			}
 	
 	}
 		
@@ -108,8 +115,6 @@ public class GamePanel extends JPanel implements Runnable{
 			
 			Graphics2D g2 = (Graphics2D)g;
 	
-		    g2.setColor(Color.white);		    
-		    g2.fillRect(playerX, playerY, TileSize, TileSize);	
 		    //player x1400 y700
 		    g2.setColor(Color.red);		    
 		    g2.fillRect(0, 255, 1350, 20);		 		    
@@ -117,8 +122,25 @@ public class GamePanel extends JPanel implements Runnable{
 		    g2.fillRect(0, 515, 1350, 20);		    	    
 		    g2.fillRect(150, 645, 1350, 20);		    	    
 		    g2.fillRect(150, 385, 1350, 20);		    	    
-		    g2.fillRect(150, 125, 350, 20);
+		    g2.fillRect(220, 125, 350, 20);
 		    
+		    g2.setColor(Color.blue);		    
+		    g2.fillRect(220, 665, 80, 110);
+		    g2.fillRect(1220, 535, 80, 110);
+		    g2.fillRect(400, 405, 80, 110);
+		    g2.fillRect(1020, 275, 80, 110);
+		    g2.fillRect(350, 145, 80, 110);
+		    
+		    
+		    g2.setColor(Color.white);		    
+		    g2.fillRect(playerX, playerY, TileSize, TileSize);
+		    
+		    g2.setColor(Color.MAGENTA);		    
+		    g2.fillRect(520, 55, 50, 70);
+		    g2.fillRect(80, 145, 110, 110);
+		    
+		    g2.setColor(Color.GREEN);
+		    g2.fillRect(0, 145, 80, 110);
 		    
 		    g2.dispose();		  
 	}
