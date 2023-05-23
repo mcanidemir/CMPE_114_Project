@@ -9,13 +9,14 @@ public class KeyHandler implements KeyListener{
 		// TODO Auto-generated method stub
 		
 	}
-
+	boolean jumping;
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
 		int input = e.getKeyCode();
 		if(input==KeyEvent.VK_W) {
 			W_pressed=true;
+			jumping = true;
 			}
 		
 		if(input==KeyEvent.VK_D) {

@@ -76,13 +76,30 @@ public class GamePanel extends JPanel implements Runnable{
 			if(KeyH.W_pressed==true) {
 				playerY -= playerSpeed;
 			}
-		// yerlerin konumlarına göre else if!!
+		 
 			
-			// if (playerY < ) {
-		        //    playerY += 5;
-		     //   } else {
-		       //     playerY = groundY;
-		     //   }
+			 if (playerY < 725 && playerY > 595) {
+		           playerY += 1;
+		       } 
+			 else if(playerY < 595 && playerY > 465){
+				 playerY += 1;
+		        }
+			 else if(playerY < 465 && playerY > 335){
+				 playerY += 1;
+		        }
+			 else if(playerY < 335 && playerY > 205){
+				 playerY += 1;
+		        }
+			 else if(playerY < 205 && playerY > 75){
+				 playerY += 1;
+		        }
+			 else if(playerY < 75 && playerY > 0){
+				 playerY += 1;
+		        }
+			 else if(playerY == 725 || playerY == 565 || playerY == 465 || playerY == 335 || playerY == 205 || playerY == 75) {
+				 playerY += 0;
+			 }
+	
 	}
 		
 		public void paintComponent(Graphics g) {
@@ -95,21 +112,11 @@ public class GamePanel extends JPanel implements Runnable{
 		    g2.fillRect(playerX, playerY, TileSize, TileSize);	
 		    //player x1400 y700
 		    g2.setColor(Color.red);		    
-		    g2.fillRect(0, 255, 1350, 20);
-		    
-		    g2.setColor(Color.red);		    
-		    g2.fillRect(0, 775, 1500, 20);
-		    
-		    g2.setColor(Color.red);		    
-		    g2.fillRect(0, 515, 1350, 20);
-		    
-		    g2.setColor(Color.red);		    
-		    g2.fillRect(150, 645, 1350, 20);
-		    
-		    g2.setColor(Color.red);		    
-		    g2.fillRect(150, 385, 1350, 20);
-		    
-		    g2.setColor(Color.red);		    
+		    g2.fillRect(0, 255, 1350, 20);		 		    
+		    g2.fillRect(0, 775, 1500, 20);		        
+		    g2.fillRect(0, 515, 1350, 20);		    	    
+		    g2.fillRect(150, 645, 1350, 20);		    	    
+		    g2.fillRect(150, 385, 1350, 20);		    	    
 		    g2.fillRect(150, 125, 350, 20);
 		    
 		    
