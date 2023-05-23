@@ -26,9 +26,9 @@ public class GamePanel extends JPanel implements Runnable{
 		
 		int playerX=1400;
 		int playerY=700;
-		int playerSpeed_Left=5;
-		int playerSpeed_Right=5;
-		int playerSpeed_Up=10;
+		int playerSpeed_Left=15;
+		int playerSpeed_Right=15;
+		int playerSpeed_Up=20;
 		
 		public GamePanel() {
 			
@@ -69,11 +69,11 @@ public class GamePanel extends JPanel implements Runnable{
 	}
 		
 		public void update() {
-			if(KeyH.A_pressed==true) {
+			if(KeyH.A_pressed==true && playerX > 10) {
 				playerX -= playerSpeed_Left;
 			}
 		
-			if(KeyH.D_pressed==true) {
+			if(KeyH.D_pressed==true && playerX < 1445) {
 				playerX += playerSpeed_Right;
 			}
 			
@@ -93,20 +93,6 @@ public class GamePanel extends JPanel implements Runnable{
 				playerY+=5;
 			}
 			
-			if(playerX==0) {
-				playerSpeed_Left=0;
-			}
-			else {
-				playerSpeed_Left=5;
-			}
-			
-			if(playerX==1450) {
-				playerSpeed_Right=0;
-			}
-			else {
-				playerSpeed_Right=5;
-			}
-	
 	}
 		
 		public void paintComponent(Graphics g) {
@@ -129,11 +115,7 @@ public class GamePanel extends JPanel implements Runnable{
 		    g2.fillRect(1220, 535, 80, 110);
 		    g2.fillRect(400, 405, 80, 110);
 		    g2.fillRect(1020, 275, 80, 110);
-		    g2.fillRect(350, 145, 80, 110);
-		    
-		    
-		    g2.setColor(Color.white);		    
-		    g2.fillRect(playerX, playerY, TileSize, TileSize);
+		    g2.fillRect(350, 145, 80, 110);		    
 		    
 		    g2.setColor(Color.MAGENTA);		    
 		    g2.fillRect(520, 55, 50, 70);
@@ -141,6 +123,9 @@ public class GamePanel extends JPanel implements Runnable{
 		    
 		    g2.setColor(Color.GREEN);
 		    g2.fillRect(0, 145, 80, 110);
+		    
+		    g2.setColor(Color.white);		    
+		    g2.fillRect(playerX, playerY, TileSize, TileSize);
 		    
 		    g2.dispose();		  
 	}
