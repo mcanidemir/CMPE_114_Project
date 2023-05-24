@@ -10,6 +10,7 @@ import javax.imageio.ImageIO;
 
 import main.GamePanel;
 import main.KeyHandler;
+import main.Sounds;
 
 public class Player extends Entity{
 
@@ -19,6 +20,7 @@ public class Player extends Entity{
     boolean OnGround=true;
     boolean neree=true;
     boolean climb = false;
+    Sounds sound= new Sounds();
 
     public Player(GamePanel gp,KeyHandler KeyH) {
         this.gp=gp;
@@ -60,13 +62,15 @@ public class Player extends Entity{
     	if(KeyH.A_pressed==true || KeyH.D_pressed==true || KeyH.W_pressed==true || KeyH.S_pressed==true) {
     	
         if(KeyH.A_pressed==true && x > 0) {
-            direction = "left";
+        	//playSE(1);
+        	direction = "left";
             x -= playerSpeed_Left;
             
             neree=true;
         }
 
         if(KeyH.D_pressed==true && x < 1450) {
+        	//playSE(1);
             direction = "right";
             x += playerSpeed_Right;
             neree=false;
@@ -99,8 +103,8 @@ public class Player extends Entity{
         
 
         if(KeyH.W_pressed==true && OnGround) {
+        	playSE(0);
         	Timer timer = new Timer();
-
         	if((x >= 200 && x <= 270 && y <= 725 && y >= 595)||
         			(x >= 1200 && x <= 1270 && y <= 595 && y >= 465)||
         			(x >= 380 && x <= 450 && y <= 465 && y >= 335)||
@@ -208,5 +212,18 @@ public class Player extends Entity{
             }
 
                 g2.drawImage(image, x, y, gp.TileSize, gp.TileSize, null);
+    }
+    
+    public void playMusic(int i) {
+        sound.setFile(i);
+        sound.play();
+        sound.loop();
+    }
+    public void stopMusic(){
+        sound.stop();
+    }
+    public void playSE(int i) {
+    sound.setFile(i);
+    sound.play();
     }
 }
