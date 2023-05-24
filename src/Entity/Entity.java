@@ -3,15 +3,18 @@ package Entity;
 import java.awt.image.BufferedImage;
 
 public class Entity {
-	public int x,y,playerSpeed_Left,playerSpeed_Right,playerSpeed_Up;
-	
-	
-	public BufferedImage mariostand;
-	public String direction;
-	
-	
-	
-	
-	
-	
+    public int x,y,playerSpeed_Left,playerSpeed_Right,playerSpeed_Up;
+
+
+    public BufferedImage mariostand, marioRight_1, marioLeft_1, marioLeft_2;
+    public String direction;
+
+    public int SprintNum=1;
+    public int SprintCount=0;
+
+
+
+
+
+
 }
