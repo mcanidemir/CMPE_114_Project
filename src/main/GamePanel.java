@@ -91,14 +91,7 @@ public class GamePanel extends JPanel implements Runnable{
 
 	
 		    //player x1400 y700
-
-		    
-		    g2.setColor(Color.blue);		    
-		    g2.fillRect(220, 665, 80, 110);
-		    g2.fillRect(1220, 535, 80, 110);
-		    g2.fillRect(400, 405, 80, 110);
-		    g2.fillRect(1020, 275, 80, 110);
-		    g2.fillRect(350, 145, 80, 110);		    
+    
 		    
 		    g2.setColor(Color.MAGENTA);		    
 		    g2.fillRect(520, 55, 50, 70);
