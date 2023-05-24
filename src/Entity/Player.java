@@ -121,9 +121,9 @@ public class Player extends Entity{
     		else {
     			timer.schedule(new TimerTask (){
         		    public void run() {
-        		        y = y - 33;
+        		        y = y - 30;
         		    }
-        		}, 15);
+        		}, 0);
     		}
         	
             direction = "up";
