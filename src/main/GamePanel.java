@@ -2,6 +2,7 @@ package main;
 import javax.swing.JPanel;
 
 import Entity.Player;
+import tile.TileManager;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -24,6 +25,7 @@ public class GamePanel extends JPanel implements Runnable{
 		
 		int FPS=60;
 		
+		TileManager TileM = new TileManager(this);
 		KeyHandler KeyH= new KeyHandler();
 		Thread gameThread;
 		Player player = new Player(this, KeyH);
@@ -85,6 +87,8 @@ public class GamePanel extends JPanel implements Runnable{
 			super.paintComponent(g);
 			
 			Graphics2D g2 = (Graphics2D)g;
+			
+
 	
 		    //player x1400 y700
 		    g2.setColor(Color.red);		    
@@ -108,6 +112,8 @@ public class GamePanel extends JPanel implements Runnable{
 		    
 		    g2.setColor(Color.GREEN);
 		    g2.fillRect(0, 145, 80, 110);
+
+			TileM.draw(g2);
 		    
 		    player.draw(g2);
 		   

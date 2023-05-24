@@ -37,7 +37,7 @@ public class Player extends Entity{
 	
 	public void getPlayerImage() {
 		try {
-		mariostand= ImageIO.read(getClass().getResourceAsStream("/Mario/marioStand.png"));	
+		mariostand= ImageIO.read(getClass().getResourceAsStream("/marioo/marioStand.png"));	
 		}catch(IOException e) {
 			e.printStackTrace();
 		}
@@ -77,7 +77,7 @@ public class Player extends Entity{
 		 //   g2.fillRect(x, y, gp.TileSize, gp.TileSize);
 		    
 		    BufferedImage image = null;
-		    image=mariostand;
+		   image=mariostand;
 		    	g2.drawImage(image, x, y, gp.TileSize, gp.TileSize, null);
 	}
 }
