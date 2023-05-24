@@ -13,7 +13,7 @@ public class Player extends Entity{
 
     GamePanel gp;
     KeyHandler KeyH; 
-
+    boolean OnGround=true;
 
 
     public Player(GamePanel gp,KeyHandler KeyH) {
@@ -28,7 +28,7 @@ public class Player extends Entity{
 
         x = 1400;
         y = 700;
-        playerSpeed_Up = 20;
+        playerSpeed_Up = 50;
         playerSpeed_Left = 10;
         playerSpeed_Right = 10;
         direction="down";
@@ -38,7 +38,7 @@ public class Player extends Entity{
     public void getPlayerImage() {
         try {
         mariostand= ImageIO.read(getClass().getResourceAsStream("/Mario/marioStand.png"));
-        marioRight_1= ImageIO.read(getClass().getResourceAsStream("/Mario/marioRight.png"));
+        marioRight_1= ImageIO.read(getClass().getResourceAsStream("/Mario/mario_left_run.png"));
         marioLeft_1= ImageIO.read(getClass().getResourceAsStream("/Mario/marioRun1.png"));
         marioLeft_2= ImageIO.read(getClass().getResourceAsStream("/Mario/marioRun2.png"));
         }catch(IOException e) {
@@ -60,9 +60,20 @@ public class Player extends Entity{
             x += playerSpeed_Right;
         }
 
-        if(KeyH.W_pressed==true) {
+        if(KeyH.W_pressed==true && OnGround) {
+        	if((x >= 200 && x <= 270 && y == 725)||
+        			(x >= 1200 && x <= 1270 && y == 595)||
+        			(x >= 380 && x <= 450 && y == 465)||
+        			(x >= 1000 && x <= 1070 && y == 335)||
+        	  		(x >= 330 && x <= 400 && y == 205)) {
+        		playerSpeed_Up=150;
+    		}
+    		else {
+    			playerSpeed_Up = 50;
+    		}
             direction = "up";
             y -= playerSpeed_Up;
+            OnGround=false;
         }
 
         SprintCount++;
@@ -82,11 +93,16 @@ public class Player extends Entity{
     			(y == 335 && x >= 110 && x <= 1500) ||
     			(y == 205 && x >= 0 && x <= 1350) ||
     			(y == 75 && x >= 180&& x <= 570)) {
-    		y += 0;
+    		y += 0; 
+    		OnGround=true;
     	}
     	else {
+    		
     		y+=5;
+    		
     	}
+    	
+    	
     }
 
     public void draw(Graphics2D g2) {

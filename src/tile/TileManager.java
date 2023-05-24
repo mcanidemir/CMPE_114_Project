@@ -44,13 +44,17 @@ public class TileManager {
 		    	g2.drawImage(tile[0].image, 150, 385, 1350, 20, null);
 		    	g2.drawImage(tile[0].image, 0, 515, 1350, 20, null);
 		    	g2.drawImage(tile[0].image, 0, 255, 1350, 20, null);
+		    	
 		    	g2.drawImage(tile[1].image, 220, 125, 350, 20, null);
+		    	
 		    	g2.drawImage(tile[2].image, 0, 145, 80, 110, null);
-		    	g2.drawImage(tile[3].image, 220, 665, 80, 110, null);
-		    	g2.drawImage(tile[3].image, 1220, 535, 80, 110, null);
-		    	g2.drawImage(tile[3].image, 400, 405, 80, 110, null);
-		    	g2.drawImage(tile[3].image, 1020, 275, 80, 110, null);
+		    	
 		    	g2.drawImage(tile[3].image, 350, 145, 80, 110, null);
+		    	g2.drawImage(tile[3].image, 1020, 275, 80, 110, null);
+		    	g2.drawImage(tile[3].image, 400, 405, 80, 110, null);
+		    	g2.drawImage(tile[3].image, 1220, 535, 80, 110, null);
+		    	g2.drawImage(tile[3].image, 220, 665, 80, 110, null);
+		    	
 		    	g2.drawImage(tile[4].image, 235, 75, 70, 50, null);
 		    	
 	}
