@@ -4,7 +4,7 @@ import java.awt.event.KeyListener;
 
 public class KeyHandler implements KeyListener{
 
-		public boolean W_pressed, A_pressed, D_pressed;
+		public boolean W_pressed, A_pressed, D_pressed, S_pressed;
 
 	@Override
 	public void keyTyped(KeyEvent e) {
@@ -27,6 +27,9 @@ public class KeyHandler implements KeyListener{
 		if(input==KeyEvent.VK_A) {
 			A_pressed=true;
 			}
+		if(input==KeyEvent.VK_S) {
+			S_pressed=true;
+		}
 	}
 
 	@Override
@@ -44,6 +47,9 @@ public class KeyHandler implements KeyListener{
 		if(input==KeyEvent.VK_A) {
 			A_pressed=false;
 			}
+		if(input==KeyEvent.VK_S) {
+			S_pressed=false;
+		}
 	
 	}
 
