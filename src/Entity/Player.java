@@ -1,5 +1,4 @@
 package Entity;
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -14,7 +13,7 @@ public class Player extends Entity{
     GamePanel gp;
     KeyHandler KeyH; 
     boolean OnGround=true;
-
+    boolean neree=true;
 
     public Player(GamePanel gp,KeyHandler KeyH) {
         this.gp=gp;
@@ -27,20 +26,22 @@ public class Player extends Entity{
     public void setDefaultValue() {
 
         x = 1400;
-        y = 700;
-        playerSpeed_Up = 50;
-        playerSpeed_Left = 10;
-        playerSpeed_Right = 10;
+        y = 725;
+        playerSpeed_Up = 60;
+        playerSpeed_Left = 5;
+        playerSpeed_Right = 5;
         direction="down";
 
     }
 
     public void getPlayerImage() {
         try {
-        mariostand= ImageIO.read(getClass().getResourceAsStream("/Mario/marioStand.png"));
-        marioRight_1= ImageIO.read(getClass().getResourceAsStream("/Mario/mario_left_run.png"));
-        marioLeft_1= ImageIO.read(getClass().getResourceAsStream("/Mario/marioRun1.png"));
-        marioLeft_2= ImageIO.read(getClass().getResourceAsStream("/Mario/marioRun2.png"));
+        marioclimb_1= ImageIO.read(getClass().getResourceAsStream("/Mario/Mario_backward_1.png"));
+        marioclimb_2= ImageIO.read(getClass().getResourceAsStream("/Mario/Mario_backward_2.png"));
+        marioRight_1= ImageIO.read(getClass().getResourceAsStream("/Mario/Mario_right.png"));
+        marioRight_2= ImageIO.read(getClass().getResourceAsStream("/Mario/Mario_right_run.png"));
+        marioLeft_1= ImageIO.read(getClass().getResourceAsStream("/Mario/Mario_left.png"));
+        marioLeft_2= ImageIO.read(getClass().getResourceAsStream("/Mario/Mario_left_run.png"));
         }catch(IOException e) {
             e.printStackTrace();
         }
@@ -53,11 +54,14 @@ public class Player extends Entity{
         if(KeyH.A_pressed==true && x > 0) {
             direction = "left";
             x -= playerSpeed_Left;
+            
+            neree=true;
         }
 
         if(KeyH.D_pressed==true && x < 1450) {
             direction = "right";
             x += playerSpeed_Right;
+            neree=false;
         }
 
         if(KeyH.W_pressed==true && OnGround) {
@@ -66,13 +70,20 @@ public class Player extends Entity{
         			(x >= 380 && x <= 450 && y == 465)||
         			(x >= 1000 && x <= 1070 && y == 335)||
         	  		(x >= 330 && x <= 400 && y == 205)) {
-        		playerSpeed_Up=150;
+        		for (int i = 0; i < 130; i++) {
+
+        			playerSpeed_Up=1;					
+        			y -= playerSpeed_Up;
+        			
+				}
+
     		}
     		else {
-    			playerSpeed_Up = 50;
+    			playerSpeed_Up = 60;
+    			y -= playerSpeed_Up;
     		}
+        	
             direction = "up";
-            y -= playerSpeed_Up;
             OnGround=false;
         }
 
@@ -88,33 +99,40 @@ public class Player extends Entity{
             SprintCount=0;
         }
     	}
-    	if(y == 725 || (y == 595 && x >= 110 && x <= 1500) ||
-    			(y == 465 && x >= 0 && x <= 1350) ||
-    			(y == 335 && x >= 110 && x <= 1500) ||
-    			(y == 205 && x >= 0 && x <= 1350) ||
-    			(y == 75 && x >= 180&& x <= 570)) {
-    		y += 0; 
-    		OnGround=true;
-    	}
-    	else {
-    		
-    		y+=5;
-    		
-    	}
+    	for (int i = 0; i < 3; i++) {
+			
+    		if(y == 725 || (y == 595 && x >= 110 && x <= 1500) ||
+    				(y == 465 && x >= 0 && x <= 1350) ||
+    				(y == 335 && x >= 110 && x <= 1500) ||
+    				(y == 205 && x >= 0 && x <= 1350) ||
+    				(y == 75 && x >= 180&& x <= 570)) {
+    			y += 0; 
+    			OnGround=true;
+    		}
+    		else {
+    			y+=1;
+    			
+    		}
+		}
     	
     	
     }
 
     public void draw(Graphics2D g2) {
-        // g2.setColor(Color.white);
-         //   g2.fillRect(x, y, gp.TileSize, gp.TileSize);
 
             BufferedImage image = null;
-            image=mariostand;
+            image=marioLeft_1;
 
             switch(direction) {
             case "up":
-                image=mariostand;
+            	if(neree) {
+            		image=marioLeft_1;
+            		
+            	}
+            	else {
+            		image=marioRight_1;
+            		
+            	}
                 break;
             case "left":
                 if(SprintNum==1) {
@@ -125,7 +143,13 @@ public class Player extends Entity{
                 }
                 break;
             case "right":
-                image=marioRight_1;
+            	if(SprintNum==1) {
+                    image=marioRight_1;
+                }
+                if(SprintNum==2) {
+                    image=marioRight_2;
+                }
+                
                 break;
                 default:
                     image=mariostand;
