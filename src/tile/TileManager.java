@@ -27,6 +27,8 @@ public class TileManager {
 			tile[0].image = ImageIO.read(getClass().getResourceAsStream("/tiles/Sprite-0003.jpg"));
 			tile[1] = new Tile();
 			tile[1].image = ImageIO.read(getClass().getResourceAsStream("/tiles/Sprite-0004.jpg"));
+			tile[2] = new Tile();
+			tile[2].image = ImageIO.read(getClass().getResourceAsStream("/tiles/Barrels.jpg"));
 		}catch(IOException e) {
 			e.printStackTrace();
 		}
@@ -39,6 +41,7 @@ public class TileManager {
 		    	g2.drawImage(tile[1].image, 220, 125, 350, 20, null);
 		    	g2.drawImage(tile[0].image, 0, 515, 1350, 20, null);
 		    	g2.drawImage(tile[0].image, 0, 255, 1350, 20, null);
+		    	g2.drawImage(tile[2].image, 0, 145, 80, 110, null);
 		    	
 	}
 }
