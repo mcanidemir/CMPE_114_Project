@@ -1,6 +1,10 @@
 package Entity;
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 import main.GamePanel;
 import main.KeyHandler;
@@ -17,6 +21,7 @@ public class Player extends Entity{
 		this.KeyH=KeyH;
 		
 		setDefaultValue();
+		getPlayerImage();
 	}
 	
 	public void setDefaultValue() {
@@ -26,19 +31,31 @@ public class Player extends Entity{
 		playerSpeed_Up = 20;
 		playerSpeed_Left = 10;
 		playerSpeed_Right = 10;
+		direction="down";
 		
 	}
 	
+	public void getPlayerImage() {
+		try {
+		mariostand= ImageIO.read(getClass().getResourceAsStream("/Mario/marioStand.png"));	
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public void update() {
-		if(KeyH.A_pressed==true && x > 10) {
+		if(KeyH.A_pressed==true && x > 0) {
+			direction = "left";
 			x -= playerSpeed_Left;
 		}
 	
-		if(KeyH.D_pressed==true && x < 1445) {
+		if(KeyH.D_pressed==true && x < 1450) {
+			direction = "right";
 			x += playerSpeed_Right;
 		}
 		
 		if(KeyH.W_pressed==true) {
+			direction = "up";
 			y -= playerSpeed_Up;
 		}
 	
@@ -56,7 +73,11 @@ public class Player extends Entity{
 	}
 	
 	public void draw(Graphics2D g2) {
-		 g2.setColor(Color.white);		    
-		    g2.fillRect(x, y, gp.TileSize, gp.TileSize);
+		// g2.setColor(Color.white);		    
+		 //   g2.fillRect(x, y, gp.TileSize, gp.TileSize);
+		    
+		    BufferedImage image = null;
+		    image=mariostand;
+		    	g2.drawImage(image, x, y, gp.TileSize, gp.TileSize, null);
 	}
 }
