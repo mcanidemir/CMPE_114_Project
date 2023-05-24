@@ -36,12 +36,15 @@ public class Player extends Entity{
 
     public void getPlayerImage() {
         try {
+        mariostand= ImageIO.read(getClass().getResourceAsStream("/Mario/marioStand.png"));
         marioclimb_1= ImageIO.read(getClass().getResourceAsStream("/Mario/Mario_backward_1.png"));
         marioclimb_2= ImageIO.read(getClass().getResourceAsStream("/Mario/Mario_backward_2.png"));
         marioRight_1= ImageIO.read(getClass().getResourceAsStream("/Mario/Mario_right.png"));
         marioRight_2= ImageIO.read(getClass().getResourceAsStream("/Mario/Mario_right_run.png"));
         marioLeft_1= ImageIO.read(getClass().getResourceAsStream("/Mario/Mario_left.png"));
         marioLeft_2= ImageIO.read(getClass().getResourceAsStream("/Mario/Mario_left_run.png"));
+        marioJump_1= ImageIO.read(getClass().getResourceAsStream("/Mario/Mario_jumping_1.png"));
+        marioJump_2= ImageIO.read(getClass().getResourceAsStream("/Mario/Mario_jumping_2.png"));
         }catch(IOException e) {
             e.printStackTrace();
         }
@@ -79,8 +82,16 @@ public class Player extends Entity{
 
     		}
     		else {
-    			playerSpeed_Up = 60;
-    			y -= playerSpeed_Up;
+    			try {
+                    for (int i = 0; i< 60 ; i++) {
+ 
+                        playerSpeed_Up = 1;
+                        y -= playerSpeed_Up;
+                        Thread.sleep(1/10);
+                    }
+                }catch(Exception e) {
+
+                }
     		}
         	
             direction = "up";
@@ -126,33 +137,41 @@ public class Player extends Entity{
             switch(direction) {
             case "up":
             	if(neree) {
-            		image=marioLeft_1;
+            		image=marioJump_2;
             		
             	}
             	else {
-            		image=marioRight_1;
+            		image=marioJump_1;
             		
             	}
                 break;
             case "left":
+            	if(y == 725 || (y == 595 ) ||(y == 465) ||(y == 335) ||(y == 205) ||(y == 75)) {
                 if(SprintNum==1) {
                     image=marioLeft_1;
                 }
                 if(SprintNum==2) {
                     image=marioLeft_2;
                 }
+            	}
+            	else {
+            		image=marioJump_2;
+            	}
                 break;
             case "right":
+            	if(y == 725 || (y == 595 ) ||(y == 465) ||(y == 335) ||(y == 205) ||(y == 75)) {
             	if(SprintNum==1) {
                     image=marioRight_1;
                 }
                 if(SprintNum==2) {
                     image=marioRight_2;
-                }
-                
+            	}
+            	}
+            	else {
+            		image=marioJump_1;
+            	}
                 break;
-                default:
-                    image=mariostand;
+
             }
 
                 g2.drawImage(image, x, y, gp.TileSize, gp.TileSize, null);
