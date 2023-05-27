@@ -84,7 +84,7 @@ public class Player extends Entity {
 			}
 
 			if (KeyH.D_pressed == true && x < 1450) {
-				playSE(1);
+				//playSE(1);
 
 				direction = "right";
 				x += playerSpeed_Right;
