@@ -10,7 +10,8 @@ import main.GamePanel;
 
 public class TileManager {
 	GamePanel gp;
-	Tile tile[];
+	public Tile tile[];
+	public int mapTileNum[][];	
 	
 	public TileManager(GamePanel gp) {
 		tile = new Tile [10];

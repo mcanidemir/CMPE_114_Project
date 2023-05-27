@@ -1,6 +1,7 @@
 package main;
 
 import Entity.Entity;
+import Entity.Player;
 
 public class Collision_Checker {
 
@@ -20,8 +21,8 @@ public class Collision_Checker {
 	
 		int entityLeftCol = entityLeftWorldX/gp.TileSize;
 		int entityRightCol = entityRightWorldX/gp.TileSize;
-		int entityTopCol = entityTopWorldY/gp.TileSize;
-		int entityBottomCol = entityBottomWorldY/gp.TileSize;
+		int entityTopRaw = entityTopWorldY/gp.TileSize;
+		int entityBottomRaw = entityBottomWorldY/gp.TileSize;
 		
 		
 		int tileNum1, tileNum2;
@@ -29,7 +30,12 @@ public class Collision_Checker {
 		switch(Entity.direction) {
 		
 		case("down"):
-			
+			entityBottomRaw = (entityBottomWorldY - Player.y)/gp.TileSize;
+			tileNum1 = gp.TileM.mapTileNum[entityLeftCol][entityTopWorldY];
+			tileNum2 = gp.TileM.mapTileNum[entityRightCol][entityTopWorldY];
+			if (gp.TileM.tile[tileNum1].collision == true || gp.TileM.tile[tileNum2].collision == true) {
+				
+			}
 			break;
 
 		case("left"):
