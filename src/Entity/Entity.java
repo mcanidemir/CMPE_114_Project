@@ -1,6 +1,6 @@
 package Entity;
 
-import java.awt.Rectangle;
+
 import java.awt.image.BufferedImage;
 
 public class Entity {
@@ -13,8 +13,6 @@ public class Entity {
     public int SprintNum=1;
     public int SprintCount=0;
     
-    public Rectangle marioSolid;
-    public boolean collision=false;
 
 
 
