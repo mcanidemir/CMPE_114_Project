@@ -9,6 +9,7 @@ public class Sounds {
 
     Clip clip;
     URL soundURL[]=new URL[30];
+    
 
     public Sounds() {
     soundURL[0] = getClass().getResource("/sound/smb_jump-small.wav");
