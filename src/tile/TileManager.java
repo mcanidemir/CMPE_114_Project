@@ -26,11 +26,9 @@ public class TileManager {
 		try {
 			tile[0] = new Tile();
 			tile[0].image = ImageIO.read(getClass().getResourceAsStream("/tiles/Sprite-0003.jpg"));
-			tile[0].collision=true;
 			
 			tile[1] = new Tile();
 			tile[1].image = ImageIO.read(getClass().getResourceAsStream("/tiles/Sprite-0004.jpg"));
-			tile[1].collision=true;
 			
 			tile[2] = new Tile();			
 			tile[2].image = ImageIO.read(getClass().getResourceAsStream("/tiles/Barrels.jpg"));

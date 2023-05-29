@@ -20,9 +20,8 @@ public class Player extends Entity {
 	boolean Alive = true;
 	boolean OnGround = true;
 	boolean neree = true;
-	boolean climb = false;
-	boolean ayaksesi = true;
-	boolean zıplamasesi = true;
+	boolean stairs = false;
+
 	Sounds sound = new Sounds();
 
 	public Player(GamePanel gp, KeyHandler KeyH) {
@@ -31,8 +30,6 @@ public class Player extends Entity {
 
 		setDefaultValue();
 		getPlayerImage();
-		
-		marioSolid = new Rectangle(x, y, 47, 47);
 	}
 
 	public void setDefaultValue() {
@@ -40,8 +37,8 @@ public class Player extends Entity {
 		x = 1400;
 		y = 725;
 		playerSpeed_Up = 60;
-		playerSpeed_Left = 5; // normal 5
-		playerSpeed_Right = 5; // normal 5
+		playerSpeed_Left = 5;
+		playerSpeed_Right = 5;
 		direction = "down";
 
 	}
@@ -64,19 +61,16 @@ public class Player extends Entity {
 
 	public void update() {
 
-		collision= false;
-		gp.c_checker.CheckTile(this);
+		if ((x >= 200 && x <= 270 && y <= 725 && y >= 595) || (x >= 1200 && x <= 1270 && y <= 595 && y >= 465)
+				|| (x >= 380 && x <= 450 && y <= 465 && y >= 335) || (x >= 1000 && x <= 1070 && y <= 335 && y >= 205)
+				|| (x >= 330 && x <= 400 && y <= 205 && y >= 85)) {
+			stairs = true;
+		}
 
 		if (KeyH.A_pressed == true || KeyH.D_pressed == true || KeyH.W_pressed == true || KeyH.S_pressed == true) {
 
 			if (KeyH.A_pressed == true && x > 0) {
-				Timer timer = new Timer();
-				timer.schedule(new TimerTask() {
-					public void run() {
-						// playSE(1);
-					}
-				}, 1000);
-				ayaksesi = true;
+				// playSE(1);
 				direction = "left";
 				x -= playerSpeed_Left;
 
@@ -84,63 +78,40 @@ public class Player extends Entity {
 			}
 
 			if (KeyH.D_pressed == true && x < 1450) {
-				//playSE(1);
-
+				// playSE(1);
 				direction = "right";
 				x += playerSpeed_Right;
 				neree = false;
 			}
 
-			// 620
-
-			if (KeyH.S_pressed == true && ((x >= 200 && x <= 270 && y < 725 && y > 595)
-					|| (x >= 1200 && x <= 1270 && y < 595 && y > 465) || (x >= 380 && x <= 450 && y < 465 && y > 335)
-					|| (x >= 1000 && x <= 1070 && y < 335 && y > 205) || (x >= 330 && x <= 400 && y < 205 && y > 85))) {
+			if (KeyH.S_pressed == true && stairs) {
 				for (int i = 0; i < 3; i++) {
-
-					if ((y < 724 && y > 595) || (y < 594 && y > 465) || (y < 464 && y > 335) || (y < 334 && y > 205)
-							|| (y < 204 && y > 85) || (y < 84 && y > 0)) {
+					if (y < 724) {
 						Timer timer = new Timer();
 						timer.schedule(new TimerTask() {
 							public void run() {
-								if (y == 725 || y == 595 || y == 465 || y == 335 || y == 205 || y == 85) {
-									y -= 0;
-								} else {
-									y = y + 1;
-								}
+								y = y + 2;
 							}
-						}, 1);
-
+						}, 100);
+					} else {
+						Timer timer = new Timer();
+						timer.schedule(new TimerTask() {
+							public void run() {
+								y = 725;
+							}
+						}, 0);
 					}
-
 				}
 
 			}
 
 			if (KeyH.W_pressed == true && OnGround) {
-				OnGround = false;
-				// System.out.println("?");
-
-				if (!((x >= 200 && x <= 270 && y <= 725 && y >= 595) || (x >= 1200 && x <= 1270 && y <= 595 && y >= 465)
-						|| (x >= 380 && x <= 450 && y <= 465 && y >= 335)
-						|| (x >= 1000 && x <= 1070 && y <= 335 && y >= 205)
-						|| (x >= 330 && x <= 400 && y <= 205 && y >= 85))) {
-					if (zıplamasesi) {
-						playSE(0);
-						 System.out.println(y);
-					}
-				}
+				// playSE(0);
 				Timer timer = new Timer();
-				if ((x >= 200 && x <= 270 && y <= 725 && y >= 595) || (x >= 1200 && x <= 1270 && y <= 595 && y >= 465)
-						|| (x >= 380 && x <= 450 && y <= 465 && y >= 335)
-						|| (x >= 1000 && x <= 1070 && y <= 335 && y >= 205)
-						|| (x >= 330 && x <= 400 && y <= 205 && y >= 85)) {
+				if (stairs) {
 					timer.schedule(new TimerTask() {
 						public void run() {
-
-							y -= 3;
-
-							// System.out.println(y);
+							y = y - 3;
 						}
 					}, 100);
 
@@ -153,9 +124,9 @@ public class Player extends Entity {
 				}
 
 				direction = "up";
-
+				OnGround = false;
 			}
-				//
+
 			SprintCount++;
 			if (SprintCount > 10) {
 
@@ -167,10 +138,9 @@ public class Player extends Entity {
 				SprintCount = 0;
 			}
 		}
-
 		for (int i = 0; i < 3; i++) {
-			// this values describes the coordinates of our platforms
-			if (y == 726 || (y == 595 && x >= 110 && x <= 1500) || (y == 465 && x >= 0 && x <= 1350)
+
+			if (y == 725 || (y == 595 && x >= 110 && x <= 1500) || (y == 465 && x >= 0 && x <= 1350)
 					|| (y == 335 && x >= 110 && x <= 1500) || (y == 205 && x >= 0 && x <= 1350)
 					|| (y == 75 && x >= 180 && x <= 570) || (x >= 200 && x <= 270 && y <= 725 && y >= 595)
 					|| (x >= 1200 && x <= 1270 && y <= 595 && y >= 465)
@@ -178,13 +148,12 @@ public class Player extends Entity {
 					|| (x >= 1000 && x <= 1070 && y <= 335 && y >= 205)
 					|| (x >= 330 && x <= 400 && y <= 205 && y >= 85)) {
 				y += 0;
-				//System.out.println("a");
 				OnGround = true;
 			} else {
-				y += 0;
-				zıplamasesi = false;
+				y += 1;
 
 			}
+
 		}
 
 	}
