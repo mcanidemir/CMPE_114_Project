@@ -106,7 +106,7 @@ public class Player extends Entity {
 			}
 
 			if (KeyH.W_pressed == true && OnGround) {
-				// playSE(0);
+				 playSE(0);
 				Timer timer = new Timer();
 				if (stairs) {
 					timer.schedule(new TimerTask() {
