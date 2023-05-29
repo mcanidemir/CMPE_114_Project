@@ -21,6 +21,8 @@ public class Player extends Entity {
 	boolean OnGround = true;
 	boolean neree = true;
 	boolean stairs = false;
+	int D_K=0;
+	
 
 	Sounds sound = new Sounds();
 
@@ -54,6 +56,13 @@ public class Player extends Entity {
 			marioLeft_2 = ImageIO.read(getClass().getResourceAsStream("/Mario/Mario_left_run.png"));
 			marioJump_1 = ImageIO.read(getClass().getResourceAsStream("/Mario/Mario_jumping_1.png"));
 			marioJump_2 = ImageIO.read(getClass().getResourceAsStream("/Mario/Mario_jumping_2.png"));
+			
+			DonkeyLeft = ImageIO.read(getClass().getResourceAsStream("/Donkey_Kong/donkey kong left.png"));
+			DonkeyMid = ImageIO.read(getClass().getResourceAsStream("/Donkey_Kong/donkey kong mid.png"));
+			DonkeyRight = ImageIO.read(getClass().getResourceAsStream("/Donkey_Kong/donkey kong right.png"));
+			
+			
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -106,7 +115,7 @@ public class Player extends Entity {
 			}
 
 			if (KeyH.W_pressed == true && OnGround) {
-				 playSE(0);
+				// playSE(0);
 				Timer timer = new Timer();
 				if (stairs) {
 					timer.schedule(new TimerTask() {
@@ -156,14 +165,45 @@ public class Player extends Entity {
 
 		}
 
-		
-		
-		
+		for(int i=0; i<40; i++)	{	
+			Timer timer = new Timer();
+			if (i<10) {
+				timer.schedule(new TimerTask() {
+					public void run() {
+						D_K=1;
+					}
+				}, 1000);
+			}
+			else if(i<20 && i>=10) {
+				timer.schedule(new TimerTask() {
+					public void run() {
+						D_K=2;
+					}
+				}, 1000);
+			}
+			else if(i<30 && i>=20) {
+				timer.schedule(new TimerTask() {
+					public void run() {
+						D_K=1;
+					}
+				}, 1000);
+			}
+			else {
+				timer.schedule(new TimerTask() {
+					public void run() {
+						D_K=3;
+					}
+				}, 1000);
+			}
+			
+			}
 	}
 
 	public void draw(Graphics2D g2) {
 
 		BufferedImage image = null;
+		BufferedImage DK = null;
+		DK = DonkeyMid;
 		image = marioLeft_1;
 
 		switch (direction) {
@@ -205,7 +245,20 @@ public class Player extends Entity {
 
 		g2.drawImage(image, x, y, gp.TileSize, gp.TileSize, null);
 		
-		g2.drawImage(DK, x, y, x, y, x, y, x, y, gp);
+		switch (D_K) {
+		case 1:
+			DK=DonkeyMid;
+			break;
+		case 2:
+			DK=DonkeyLeft;
+			break;
+		case 3:
+			DK=DonkeyRight;
+			break;
+			
+		}
+		
+		g2.drawImage(DK, 80, 145, 110, 110, null);
 	}
 
 	public void playMusic(int i) {

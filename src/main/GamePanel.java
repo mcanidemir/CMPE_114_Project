@@ -71,7 +71,6 @@ public class GamePanel extends JPanel implements Runnable{
 				delta--;
 			}
 			
-			
 		}			
 	}
 		
@@ -96,7 +95,6 @@ public class GamePanel extends JPanel implements Runnable{
 		    
 		    g2.setColor(Color.MAGENTA);		    
 		    g2.fillRect(520, 55, 50, 70);
-		    g2.fillRect(80, 145, 110, 110);
 		    
 
 
