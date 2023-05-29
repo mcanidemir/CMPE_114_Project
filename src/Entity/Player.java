@@ -156,6 +156,9 @@ public class Player extends Entity {
 
 		}
 
+		
+		
+		
 	}
 
 	public void draw(Graphics2D g2) {
@@ -201,6 +204,8 @@ public class Player extends Entity {
 		}
 
 		g2.drawImage(image, x, y, gp.TileSize, gp.TileSize, null);
+		
+		g2.drawImage(DK, x, y, x, y, x, y, x, y, gp);
 	}
 
 	public void playMusic(int i) {
