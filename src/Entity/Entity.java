@@ -9,6 +9,7 @@ public class Entity {
 			marioJump_1, marioJump_2, DonkeyLeft, DonkeyMid, DonkeyRight;
 	public String direction;
 
+	
 	public int SprintNum = 1;
 	public int SprintCount = 0;
 

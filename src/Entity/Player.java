@@ -174,6 +174,7 @@ public class Player extends Entity {
 					}
 				}, 1000);
 			}
+			
 			else if(i<20 && i>=10) {
 				timer.schedule(new TimerTask() {
 					public void run() {

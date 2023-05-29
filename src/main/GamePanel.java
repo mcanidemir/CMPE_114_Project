@@ -11,6 +11,7 @@ import java.awt.Graphics2D;
 
 public class GamePanel extends JPanel implements Runnable{
 
+	
 		final int originalTileSize = 16;
 		final int scale = 3;
 		
