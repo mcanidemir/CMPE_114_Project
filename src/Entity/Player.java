@@ -55,6 +55,8 @@ public class Player extends Entity {
 			marioLeft_2 = ImageIO.read(getClass().getResourceAsStream("/Mario/Mario_left_run.png"));
 			marioJump_1 = ImageIO.read(getClass().getResourceAsStream("/Mario/Mario_jumping_1.png"));
 			marioJump_2 = ImageIO.read(getClass().getResourceAsStream("/Mario/Mario_jumping_2.png"));
+			marioClimb_1 = ImageIO.read(getClass().getResourceAsStream("/Mario/Mario_backward_1.png"));
+			marioClimb_2 = ImageIO.read(getClass().getResourceAsStream("/Mario/Mario_backward_2.png"));
 
 			DonkeyLeft = ImageIO.read(getClass().getResourceAsStream("/Donkey_Kong/donkey kong left.png"));
 			DonkeyMid = ImageIO.read(getClass().getResourceAsStream("/Donkey_Kong/donkey kong mid.png"));
@@ -122,6 +124,19 @@ public class Player extends Entity {
                     }
 				Timer timer = new Timer();
 				if (stairs) {
+					
+					ClimbCount++;
+					if (ClimbCount > 10) {
+
+						if (ClimbNum == 1) {
+							ClimbNum = 2;
+						} else if (ClimbNum == 2) {
+							ClimbNum = 1;
+						}
+						ClimbCount = 0;
+						direction = "climb";
+					}
+					
 					timer.schedule(new TimerTask() {
 						public void run() {
 							y = y - 3;
@@ -132,11 +147,11 @@ public class Player extends Entity {
 					timer.schedule(new TimerTask() {
 						public void run() {
 							y = y - 30;
+							direction = "up";
 						}
 					}, 0);
 				}
 
-				direction = "up";
 				OnGround = false;
 			}
 
@@ -182,6 +197,15 @@ public class Player extends Entity {
 
 			} else {
 				image = marioJump_1;
+
+			}
+			break;
+		case "climb":
+			if (ClimbNum == 1) {
+				image = marioClimb_2;
+
+			} else {
+				image = marioClimb_1;
 
 			}
 			break;
