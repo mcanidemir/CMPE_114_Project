@@ -42,7 +42,6 @@ public class TileManager {
 			tile[4] = new Tile();
 			tile[4].image = ImageIO.read(getClass().getResourceAsStream("/others/peach.png"));
 			
-			
 		}catch(IOException e) {
 			e.printStackTrace();
 		}

@@ -8,12 +8,15 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
-public class GamePanel extends JPanel implements Runnable{
+public class GamePanel extends JPanel implements Runnable, MouseListener{
 
 	
 		final int originalTileSize = 16;
 		final int scale = 3;
+		public static int game = 0;
 		
 		public final int TileSize = originalTileSize * scale;
 		final int MaxScreenCol = 16;
@@ -21,14 +24,13 @@ public class GamePanel extends JPanel implements Runnable{
 		final int ScreenWidth = 1500;
 		final int ScreenHeight = 800;
 		
-
-		
 		
 		int FPS=60;
 		
 		boolean ground;
 		TileManager TileM = new TileManager(this);
 		KeyHandler KeyH= new KeyHandler();
+		Game_States GameState = new Game_States();
 		Thread gameThread;
 		Player player = new Player(this, KeyH);
 		projectile projectile = new projectile(this);
@@ -79,10 +81,21 @@ public class GamePanel extends JPanel implements Runnable{
 		
 		public void update() {
 			
+		if (game == 2) {
 			
-			player.update();
-			projectile.update();
+			if (Player.x <= 250 && Player.x >= 220 && Player.y == 75) { 
+				
+				game = 1;
+				
+			}
+			else {
+				
+				player.update();
+				projectile.update();
+				
+			}
 			
+		}
 	}
 		
 		public void paintComponent(Graphics g) {
@@ -90,8 +103,6 @@ public class GamePanel extends JPanel implements Runnable{
 			super.paintComponent(g);
 			
 			Graphics2D g2 = (Graphics2D)g;
-			
-
 	
 		    //player x1400 y700
 		    
@@ -99,11 +110,20 @@ public class GamePanel extends JPanel implements Runnable{
 		    g2.fillRect(520, 55, 50, 70);
 		    
 
+		    TileM.draw(g2);
 
-			TileM.draw(g2);
-		    
 		    player.draw(g2);
 		    projectile.draw(g2);
+		    
+		    if (game == 1) {
+		    	
+		    	GameState.gameEnd(g2);
+		    	
+		    }
+		    
+		    if (game == 0) {
+		    	GameState.gameStart(g2);
+		    }
 		    
 		    g2.dispose();		  
 	}
@@ -120,5 +140,30 @@ public class GamePanel extends JPanel implements Runnable{
 	    sound.setFile(i);
 	    sound.play();
 	    }
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+		@Override
+		public void mousePressed(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+		@Override
+		public void mouseReleased(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+		@Override
+		public void mouseExited(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
 		
 }

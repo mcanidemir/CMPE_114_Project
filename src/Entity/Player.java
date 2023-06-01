@@ -254,4 +254,7 @@ public class Player extends Entity {
 		sound.setFile(i);
 		sound.play();
 	}
+	public void MonkeyTouched() {
+
+	}
 }

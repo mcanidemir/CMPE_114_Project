@@ -56,9 +56,15 @@ public class projectile {
 	}
 
 	int count = 0;
+	int arrcount = 0;
 
 	public void update() {
-
+		if (arrcount <= 9) {
+			if (PX.get(arrcount) == 535) {
+				PX.set(arrcount, PX.get(arrcount) + 50);
+				arrcount++;
+			}
+		}
 		for (int i = 0; i < 1; i++) {
 
 			if (PY.get(i) == stair1Y || (PY.get(i) == stair2Y && PX.get(i) >= 110 && PX.get(i) <= 1500)
@@ -76,71 +82,70 @@ public class projectile {
 			} else {
 				ladder = false;
 			}
-		
 
-		// TODO Auto-generated method stub
-		for (int j = 0; j < 1; j++) {
+			for (int j = 0; j < 1; j++) {
 
-			if (count < 10) {
+				if (count < 10) {
 
-				if (ladder) {
-					barrelonladder++;
-					System.out.println(barrelonladder);
-
-					if (PY.get(j) == 725 || PY.get(j) == 465 || PY.get(j) == 205) {
-						PX.set(count, PX.get(count) + 50);
-
-					}
-
-					else if (PY.get(j) == 595 || PY.get(j) == stair4Y) {
-						PX.set(count, PX.get(count) - 50);
-
-						}
-					if (barrelonladder == 30) {
-						PY.set(count, PY.get(count) + 26);
-						barrelonladder = 0;
-					}
-				}else {
-
-					if (ground) {
+					if (ladder) {
+						barrelonladder++;
+						//System.out.println(barrelonladder);
 
 						if (PY.get(j) == 725 || PY.get(j) == 465 || PY.get(j) == 205) {
-
 							PX.set(count, PX.get(count) + 50);
 
 						}
 
-						else if (PY.get(j) == 595 || PY.get(j) == 335) {
-
+						else if (PY.get(j) == 595 || PY.get(j) == stair4Y) {
 							PX.set(count, PX.get(count) - 50);
-						}
 
-						if (PX.get(j) > 1500) {
-							PX.set(count, 35);
-							PY.set(count, 205);
+						}
+						if (barrelonladder == 30) {
+							PY.set(count, PY.get(count) + 26);
+							barrelonladder = 0;
 						}
 					} else {
 
-						PY.set(count, PY.get(count) + 26);
-					}
-				}
-				count++;
-			} else {
-				count = 0;
-			}
+						if (ground) {
 
-		}}
-		//System.out.println(PX.get(0));
+							if (PY.get(j) == 725 || PY.get(j) == 465 || PY.get(j) == 205) {
+
+								PX.set(count, PX.get(count) + 50);
+
+							}
+
+							else if (PY.get(j) == 595 || PY.get(j) == 335) {
+
+								PX.set(count, PX.get(count) - 50);
+							}
+
+							if (PX.get(j) > 1500) {
+								PX.set(count, 35);
+								PY.set(count, 205);
+							}
+						} else {
+
+							PY.set(count, PY.get(count) + 26);
+						}
+					}
+					count++;
+				} else {
+					count = 0;
+				}
+
+			}
+		}
+		// System.out.println(PX.get(0));
 	}
 
 	public void draw(Graphics2D g2) {
 		// TODO Auto-generated method stub
 		BufferedImage Image = null;
-		//Image = A;
-		for (int i = 0; i < 1; i++) {
-			g2.setColor(Color.PINK);
-			g2.fillRect(PX.get(i) + 16, PY.get(i) + 16, 50,10);
-			//g2.drawImage(Image, PX.get(i) + 16, PY.get(i) + 16, 32, 32, null);
+		 Image = A;
+		for (int i = 0; i < 10; i++) {
+			//g2.setColor(Color.PINK);
+			//g2.fillRect(PX.get(i) + 16, PY.get(i) + 16, 50, 10);
+			 g2.drawImage(Image, PX.get(i) + 16, PY.get(i) + 16, 32, 32, null);
 
 		}
 	}
