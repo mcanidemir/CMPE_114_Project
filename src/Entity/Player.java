@@ -19,7 +19,7 @@ public class Player extends Entity {
 	boolean Alive = true;
 	boolean OnGround = true;
 	boolean neree = true;
-	boolean stairs = false;
+	public boolean stairs = false;
 	boolean ground = false;
 	int D_K = 0;
 
@@ -116,7 +116,10 @@ public class Player extends Entity {
 			}
 
 			if (KeyH.W_pressed == true && OnGround) {
-				// playSE(0);
+				if (y == 725 || y == 595 || y == 465 || y == 335 || y == 205 || y == 85) {
+                    if(!stairs) 
+                    playSE(0);
+                    }
 				Timer timer = new Timer();
 				if (stairs) {
 					timer.schedule(new TimerTask() {

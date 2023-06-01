@@ -18,6 +18,7 @@ public class projectile {
 	BufferedImage A;
 	int AS = 0;
 	int SA = 205;
+	int barrelonladder = 0;
 
 	public projectile(GamePanel gp) {
 		this.gp = gp;
@@ -74,19 +75,44 @@ public class projectile {
 						if (ground) {
 
 							if (PY.get(i) == 725 || PY.get(i) == 465 || PY.get(i) == 205) {
-								PX.set(count, PX.get(count) + 12);
+								if ((PX.get(i) >= 1200 && PX.get(i) <= 1270 &&PY.get(i) == 465)
+										|| (PX.get(i) >= 1000 && PX.get(i) <= 1070 && PY.get(i) == 205)
+										) {
+									barrelonladder++;
+									System.out.println(barrelonladder);
+									if (barrelonladder == 3) {
+										PY.set(count, PY.get(count) + 26);
+										barrelonladder= 0;
+									}
+								}
+								if (barrelonladder == 3) {
+									PX.set(count, PX.get(count));
+									
+								}
+								else {
+									PX.set(count, PX.get(count) + 48);
+								}
 							}
 
 							else if (PY.get(i) == 595 || PY.get(i) == 335) {
-								PX.set(count, PX.get(count) - 12);
+								if ((PX.get(i) >= 200 && PX.get(i) <= 270 && PY.get(i) == 595)
+										|| (PX.get(i) >= 380 && PX.get(i) <= 450 &&PY.get(i) == 335)) {
+									barrelonladder++;
+									System.out.println(barrelonladder);
+									if (barrelonladder == 3) {
+										PY.set(count, PY.get(count) + 26);
+										barrelonladder= 0;
+									}
+								}
+								PX.set(count, PX.get(count) - 48);
 							}
 
 							if (PX.get(i) > 1500) {
 								PX.set(count, 0);
 								PY.set(count, 205);
 							}
-						}
-						else {
+						} else {
+							
 							PY.set(count, PY.get(count) + 26);
 						}
 
@@ -105,7 +131,7 @@ public class projectile {
 		BufferedImage Image = null;
 		Image = A;
 		for (int i = 0; i < 1; i++) {
-			g2.drawImage(Image, PX.get(i)+16, PY.get(i)+16, 32, 32, null);
+			g2.drawImage(Image, PX.get(i) + 16, PY.get(i) + 16, 32, 32, null);
 
 		}
 	}
