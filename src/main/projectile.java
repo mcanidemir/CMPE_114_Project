@@ -13,10 +13,11 @@ public class projectile {
 
 	GamePanel gp;
 	boolean ground = false;
+	boolean ladder = false;
 	ArrayList<Integer> PX = new ArrayList<>();
 	ArrayList<Integer> PY = new ArrayList<>();
 	BufferedImage A;
-	int AS = 0;
+	int AS = 35;
 	int SA = 205;
 	int barrelonladder = 0;
 
@@ -62,6 +63,13 @@ public class projectile {
 			} else {
 				ground = false;
 			}
+
+			if ((PX.get(i) == 1235 && PY.get(i) == 465) || (PX.get(i) == 1035 && PY.get(i) == 205)
+					|| (PX.get(i) == 235 && PY.get(i) == 595) || (PX.get(i) == 415 && PY.get(i) == 335)) {
+				ladder = true;
+			} else {
+				ladder = false;
+			}
 		}
 
 		// TODO Auto-generated method stub
@@ -72,50 +80,49 @@ public class projectile {
 
 					if (count < 10) {
 
-						if (ground) {
+						if (ladder) {
+							barrelonladder++;
+							System.out.println(barrelonladder);
 
 							if (PY.get(i) == 725 || PY.get(i) == 465 || PY.get(i) == 205) {
-								if ((PX.get(i) >= 1200 && PX.get(i) <= 1270 &&PY.get(i) == 465)
-										|| (PX.get(i) >= 1000 && PX.get(i) <= 1070 && PY.get(i) == 205)
-										) {
-									barrelonladder++;
-									System.out.println(barrelonladder);
-									if (barrelonladder == 3) {
-										PY.set(count, PY.get(count) + 26);
-										barrelonladder= 0;
-									}
-								}
-								if (barrelonladder == 3) {
-									PX.set(count, PX.get(count));
-									
-								}
-								else {
-									PX.set(count, PX.get(count) + 48);
-								}
+
+								PX.set(count, PX.get(count) + 50);
+
 							}
 
 							else if (PY.get(i) == 595 || PY.get(i) == 335) {
-								if ((PX.get(i) >= 200 && PX.get(i) <= 270 && PY.get(i) == 595)
-										|| (PX.get(i) >= 380 && PX.get(i) <= 450 &&PY.get(i) == 335)) {
-									barrelonladder++;
-									System.out.println(barrelonladder);
-									if (barrelonladder == 3) {
-										PY.set(count, PY.get(count) + 26);
-										barrelonladder= 0;
-									}
-								}
-								PX.set(count, PX.get(count) - 48);
-							}
 
-							if (PX.get(i) > 1500) {
-								PX.set(count, 0);
-								PY.set(count, 205);
+								PX.set(count, PX.get(count) - 50);
+								if (barrelonladder == 30) {
+									PY.set(count, PY.get(count) + 26);
+									barrelonladder = 0;
+
+								}
 							}
 						} else {
-							
-							PY.set(count, PY.get(count) + 26);
-						}
 
+							if (ground) {
+
+								if (PY.get(i) == 725 || PY.get(i) == 465 || PY.get(i) == 205) {
+
+									PX.set(count, PX.get(count) + 50);
+
+								}
+
+								else if (PY.get(i) == 595 || PY.get(i) == 335) {
+
+									PX.set(count, PX.get(count) - 50);
+								}
+
+								if (PX.get(i) > 1500) {
+									PX.set(count, 0);
+									PY.set(count, 205);
+								}
+							} else {
+
+								PY.set(count, PY.get(count) + 26);
+							}
+						}
 						count++;
 					} else {
 						count = 0;
