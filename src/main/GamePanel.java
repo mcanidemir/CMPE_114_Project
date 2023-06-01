@@ -26,10 +26,12 @@ public class GamePanel extends JPanel implements Runnable{
 		
 		int FPS=60;
 		
+		boolean ground;
 		TileManager TileM = new TileManager(this);
 		KeyHandler KeyH= new KeyHandler();
 		Thread gameThread;
 		Player player = new Player(this, KeyH);
+		projectile projectile = new projectile(this);
 		Sounds sound= new Sounds();
 		
 		int playerX=1400;
@@ -79,7 +81,7 @@ public class GamePanel extends JPanel implements Runnable{
 			
 			
 			player.update();
-			
+			projectile.update();
 			
 	}
 		
@@ -102,7 +104,7 @@ public class GamePanel extends JPanel implements Runnable{
 			TileM.draw(g2);
 		    
 		    player.draw(g2);
-		   
+		    projectile.draw(g2);
 		    
 		    g2.dispose();		  
 	}

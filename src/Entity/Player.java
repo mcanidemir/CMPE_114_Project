@@ -1,7 +1,6 @@
 package Entity;
 
 import java.awt.Graphics2D;
-import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Timer;
@@ -21,8 +20,8 @@ public class Player extends Entity {
 	boolean OnGround = true;
 	boolean neree = true;
 	boolean stairs = false;
-	int D_K=0;
-	
+	boolean ground = false;
+	int D_K = 0;
 
 	Sounds sound = new Sounds();
 
@@ -56,13 +55,11 @@ public class Player extends Entity {
 			marioLeft_2 = ImageIO.read(getClass().getResourceAsStream("/Mario/Mario_left_run.png"));
 			marioJump_1 = ImageIO.read(getClass().getResourceAsStream("/Mario/Mario_jumping_1.png"));
 			marioJump_2 = ImageIO.read(getClass().getResourceAsStream("/Mario/Mario_jumping_2.png"));
-			
+
 			DonkeyLeft = ImageIO.read(getClass().getResourceAsStream("/Donkey_Kong/donkey kong left.png"));
 			DonkeyMid = ImageIO.read(getClass().getResourceAsStream("/Donkey_Kong/donkey kong mid.png"));
 			DonkeyRight = ImageIO.read(getClass().getResourceAsStream("/Donkey_Kong/donkey kong right.png"));
-			
-			
-			
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -74,7 +71,11 @@ public class Player extends Entity {
 				|| (x >= 380 && x <= 450 && y <= 465 && y >= 335) || (x >= 1000 && x <= 1070 && y <= 335 && y >= 205)
 				|| (x >= 330 && x <= 400 && y <= 205 && y >= 85)) {
 			stairs = true;
+		} else {
+			stairs = false;
 		}
+		
+		
 
 		if (KeyH.A_pressed == true || KeyH.D_pressed == true || KeyH.W_pressed == true || KeyH.S_pressed == true) {
 
@@ -149,7 +150,7 @@ public class Player extends Entity {
 		}
 		for (int i = 0; i < 3; i++) {
 
-			if (y == 725 || (y == 595 && x >= 110 && x <= 1500) || (y == 465 && x >= 0 && x <= 1350)
+			if(y == 725 || (y == 595 && x >= 110 && x <= 1500) || (y == 465 && x >= 0 && x <= 1350)
 					|| (y == 335 && x >= 110 && x <= 1500) || (y == 205 && x >= 0 && x <= 1350)
 					|| (y == 75 && x >= 180 && x <= 570) || (x >= 200 && x <= 270 && y <= 725 && y >= 595)
 					|| (x >= 1200 && x <= 1270 && y <= 595 && y >= 465)
@@ -160,51 +161,15 @@ public class Player extends Entity {
 				OnGround = true;
 			} else {
 				y += 1;
-
 			}
-
 		}
 
-		for(int i=0; i<40; i++)	{	
-			Timer timer = new Timer();
-			if (i<10) {
-				timer.schedule(new TimerTask() {
-					public void run() {
-						D_K=1;
-					}
-				}, 1000);
-			}
-			
-			else if(i<20 && i>=10) {
-				timer.schedule(new TimerTask() {
-					public void run() {
-						D_K=2;
-					}
-				}, 1000);
-			}
-			else if(i<30 && i>=20) {
-				timer.schedule(new TimerTask() {
-					public void run() {
-						D_K=1;
-					}
-				}, 1000);
-			}
-			else {
-				timer.schedule(new TimerTask() {
-					public void run() {
-						D_K=3;
-					}
-				}, 1000);
-			}
-			
-			}
 	}
 
 	public void draw(Graphics2D g2) {
 
 		BufferedImage image = null;
-		BufferedImage DK = null;
-		DK = DonkeyMid;
+
 		image = marioLeft_1;
 
 		switch (direction) {
@@ -244,22 +209,8 @@ public class Player extends Entity {
 
 		}
 
-		g2.drawImage(image, x, y, gp.TileSize, gp.TileSize, null);
-		
-		switch (D_K) {
-		case 1:
-			DK=DonkeyMid;
-			break;
-		case 2:
-			DK=DonkeyLeft;
-			break;
-		case 3:
-			DK=DonkeyRight;
-			break;
-			
-		}
-		
-		g2.drawImage(DK, 80, 145, 110, 110, null);
+		g2.drawImage(image, x+4, y+4, gp.TileSize, gp.TileSize, null);
+
 	}
 
 	public void playMusic(int i) {
