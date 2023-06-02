@@ -1,4 +1,5 @@
 package main;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import Entity.Player;
@@ -11,7 +12,7 @@ import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class GamePanel extends JPanel implements Runnable, MouseListener{
+public class GamePanel extends JPanel implements Runnable{
 
 	
 		final int originalTileSize = 16;
@@ -35,6 +36,8 @@ public class GamePanel extends JPanel implements Runnable, MouseListener{
 		Player player = new Player(this, KeyH);
 		projectile projectile = new projectile(this);
 		Sounds sound= new Sounds();
+		
+		JLabel label;
 		
 		int playerX=1400;
 		int playerY=700;
@@ -61,6 +64,7 @@ public class GamePanel extends JPanel implements Runnable, MouseListener{
 			double draw_Interval = 1000000000/FPS;
 			double delta=0;
 			long Last_Time=System.nanoTime();
+
 			
 		while(gameThread != null) {
 			
@@ -88,6 +92,7 @@ public class GamePanel extends JPanel implements Runnable, MouseListener{
 				game = 1;
 				
 			}
+		
 			else {
 				
 				player.update();
@@ -96,6 +101,15 @@ public class GamePanel extends JPanel implements Runnable, MouseListener{
 			}
 			
 		}
+		else if (game == 0) {
+	    	MouseHandler m = new MouseHandler();
+	    	label = new JLabel();
+			label.setBounds(0, 0, 1500, 800);
+			label.addMouseListener(m);
+			
+			this.add(label);
+		}
+
 	}
 		
 		public void paintComponent(Graphics g) {
@@ -122,7 +136,9 @@ public class GamePanel extends JPanel implements Runnable, MouseListener{
 		    }
 		    
 		    if (game == 0) {
+		    	
 		    	GameState.gameStart(g2);
+		    	
 		    }
 		    
 		    g2.dispose();		  
@@ -140,30 +156,5 @@ public class GamePanel extends JPanel implements Runnable, MouseListener{
 	    sound.setFile(i);
 	    sound.play();
 	    }
-		@Override
-		public void mouseClicked(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-		@Override
-		public void mousePressed(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-		@Override
-		public void mouseReleased(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-		@Override
-		public void mouseEntered(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-		@Override
-		public void mouseExited(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-		
+
 }
