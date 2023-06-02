@@ -90,6 +90,8 @@ public class GamePanel extends JPanel implements Runnable{
 			if (Player.x <= 250 && Player.x >= 220 && Player.y == 75) { 
 				
 				game = 1;
+				Player.x = 1400;
+				Player.y = 725;
 				
 			}
 		
@@ -101,7 +103,7 @@ public class GamePanel extends JPanel implements Runnable{
 			}
 			
 		}
-		else if (game == 0) {
+		else{
 	    	MouseHandler m = new MouseHandler();
 	    	label = new JLabel();
 			label.setBounds(0, 0, 1500, 800);

@@ -10,6 +10,7 @@ public class MouseHandler implements MouseListener{
 	JLabel label;
 
 	@Override
+	
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
 		GamePanel.game=2;
