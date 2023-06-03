@@ -23,7 +23,7 @@ public class Game_States {
 
 	public void gameEnd(Graphics g2) {
 		try {
-			e = ImageIO.read(getClass().getResourceAsStream("/others/You_Win.png"));
+			e = ImageIO.read(getClass().getResourceAsStream("/others/e.jpg"));
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -40,7 +40,7 @@ public class Game_States {
 
 	public void isLost(Graphics g2) {
 		try {
-			e = ImageIO.read(getClass().getResourceAsStream("/others/You-Lose1.png"));
+			e = ImageIO.read(getClass().getResourceAsStream("/others/k.jpg"));
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -53,5 +53,8 @@ public class Game_States {
 			projectile.PY.set(i, 205);
 		}
 		projectile.barrelonladder = 0;
+	}
+	public void countDown(Graphics g2) {
+		
 	}
 }

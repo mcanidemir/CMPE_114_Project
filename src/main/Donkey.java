@@ -35,23 +35,23 @@ public class Donkey {
 	public void update() {
 
 		DX += 1;
-		if (DX < 18 && DX >= 0) {
+		if (DX < 1615 && DX >= 1600) {
+			direction = 0;
+		} else if (DX <= 1640 && DX >= 1615) {
 			direction = 1;
-		} else if (DX <= 48 && DX >= 18) {
+		} else if (DX <= 1655 && DX >= 1640) {
 			direction = 0;
-		} else if (DX <= 66 && DX >= 48) {
+		} else if (DX <= 1680 && DX >= 1655) {
 			direction = 2;
-		} else if (DX <= 96 && DX >= 66) {
-			direction = 0;
 		} else {
-			DX = 0;
+			DX = 1600;
 		}
-		//System.out.println(DX);
+		// System.out.println(DX);
 	}
 
 	public void draw(Graphics2D g2) {
 		BufferedImage image = null;
-		image = DonkeyLeft;
+		image = DonkeyMid;
 
 		switch (direction) {
 		case 0:
