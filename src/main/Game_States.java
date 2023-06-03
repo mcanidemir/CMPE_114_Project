@@ -4,6 +4,8 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import Entity.Player;
+
 import java.awt.Graphics;
 
 
@@ -27,6 +29,13 @@ public class Game_States {
 				e1.printStackTrace();
 			}
     		g2.drawImage(e, 0, 0, 1500, 800, null);
+    		Player.x = 1400;
+    		Player.y = 725;
+    		for(int i = 0 ; i<26 ; i++) {
+    			projectile.PX.set(i, 35);
+    			projectile.PY.set(i, 205);
+    		}
+    		projectile.barrelonladder = 0;
 	}
 	public void isLost(Graphics g2) {
 			try {
@@ -36,5 +45,12 @@ public class Game_States {
 				e1.printStackTrace();
 			}
     		g2.drawImage(e, 0, 0, 1500, 800, null);
+    		Player.x = 1400;
+    		Player.y = 725;
+    		for(int i = 0 ; i<26 ; i++) {
+    			projectile.PX.set(i, 35);
+    			projectile.PY.set(i, 205);
+    		}
+    		projectile.barrelonladder = 0;
 	}
 }

@@ -17,7 +17,7 @@ public class GamePanel extends JPanel implements Runnable{
 	
 		final int originalTileSize = 16;
 		final int scale = 3;
-		public static int game = 3;
+		public static int game = 0;
 		
 		public final int TileSize = originalTileSize * scale;
 		final int MaxScreenCol = 16;
@@ -29,6 +29,8 @@ public class GamePanel extends JPanel implements Runnable{
 		int FPS=60;
 		
 		boolean ground;
+		
+		Collusion Col = new Collusion();
 		TileManager TileM = new TileManager(this);
 		KeyHandler KeyH= new KeyHandler();
 		Game_States GameState = new Game_States();
@@ -90,8 +92,6 @@ public class GamePanel extends JPanel implements Runnable{
 			if (Player.x <= 250 && Player.x >= 220 && Player.y == 75) { 
 				
 				game = 1;
-				Player.x = 1400;
-				Player.y = 725;
 				
 			}
 		
@@ -99,7 +99,7 @@ public class GamePanel extends JPanel implements Runnable{
 				
 				player.update();					
 				projectile.update();
-
+				Col.MonkeyTouched();
 				
 			}
 			
@@ -145,7 +145,9 @@ public class GamePanel extends JPanel implements Runnable{
 		    }
 		    
 		    if (game == 3) {
+		    	
 		    	GameState.isLost(g2);
+		    	
 		    }
 		    
 		    g2.dispose();		  

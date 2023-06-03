@@ -23,7 +23,7 @@ public class projectile {
 	BufferedImage A;
 	int AS = 35;
 	int SA = 205;
-	int barrelonladder = 0;
+	static int barrelonladder = 0;
 	public static int stair1Y = 725;
 	public static int stair2Y = 595;
 	public static int stair3Y = 465;
@@ -126,9 +126,8 @@ public class projectile {
 				} else {
 					count = 0;
 				}
-
 		}
-		System.out.println(PX.get(0) + ", " + PY.get(0));
+		//System.out.println(PX.get(0) + ", " + PY.get(0));
 		//System.out.println(barrelonladder);
 	}
 
