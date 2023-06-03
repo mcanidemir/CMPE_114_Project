@@ -40,7 +40,7 @@ public class TileManager {
 			
 			
 			tile[4] = new Tile();
-			tile[4].image = ImageIO.read(getClass().getResourceAsStream("/others/peach.png"));
+			tile[4].image = ImageIO.read(getClass().getResourceAsStream("/others/scared_donkeykong.png"));
 			
 		}catch(IOException e) {
 			e.printStackTrace();
@@ -64,7 +64,7 @@ public class TileManager {
 		    	g2.drawImage(tile[3].image, 1220, 535, 80, 110, null);
 		    	g2.drawImage(tile[3].image, 220, 665, 80, 110, null);
 		    	
-		    	g2.drawImage(tile[4].image, 235, 75, 70, 50, null);
+		    	g2.drawImage(tile[4].image, 235, 75, 50, 50, null);
 		    	
 	}
 }

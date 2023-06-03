@@ -76,8 +76,6 @@ public class Player extends Entity {
 		} else {
 			stairs = false;
 		}
-		
-		
 
 		if (KeyH.A_pressed == true || KeyH.D_pressed == true || KeyH.W_pressed == true || KeyH.S_pressed == true) {
 
@@ -97,34 +95,49 @@ public class Player extends Entity {
 			}
 
 			if (KeyH.S_pressed == true && stairs) {
-				for (int i = 0; i < 3; i++) {
-					if (y < 724) {
-						Timer timer = new Timer();
-						timer.schedule(new TimerTask() {
-							public void run() {
-								y = y + 2;
-							}
-						}, 100);
-					} else {
-						Timer timer = new Timer();
-						timer.schedule(new TimerTask() {
-							public void run() {
-								y = 725;
-							}
-						}, 0);
-					}
+				for (int i = 0; i < 6; i++) {
+					Timer timer = new Timer();
+					timer.schedule(new TimerTask() {
+						public void run() {
+							if(y < 724 && y >= 595) {
+	                            if (y < 724 && y >= 595) {
+	                                y = y + 1;
+	                            } else {
+	                                y = 725;
+	                            }}
+	                            if (y < 594 && y >= 465) {
+	                            if (y < 594 && y >= 465) {
+	                                y = y + 1;
+	                            } else {
+	                                y = 595;
+	                            }}
+	                            if (y < 464 && y >= 334) {
+	                            if (y < 464 && y >= 334) {
+	                                y = y + 1;
+	                            } else {
+	                                y = 465;
+	                            }}
+	                            if (y < 334 && y >= 205) {
+	                            if (y < 334 && y >= 205) {
+	                                y = y + 1;
+	                            } else {
+	                                y = 334;
+	                                }}
+						}
+					}, 100);
+
 				}
 
 			}
 
 			if (KeyH.W_pressed == true && OnGround) {
 				if (y == 725 || y == 595 || y == 465 || y == 335 || y == 205 || y == 85) {
-                    if(!stairs) 
-                    playSE(0);
-                    }
+					if (!stairs)
+						playSE(0);
+				}
 				Timer timer = new Timer();
 				if (stairs) {
-					
+
 					ClimbCount++;
 					if (ClimbCount > 10) {
 
@@ -136,7 +149,7 @@ public class Player extends Entity {
 						ClimbCount = 0;
 						direction = "climb";
 					}
-					
+
 					timer.schedule(new TimerTask() {
 						public void run() {
 							y = y - 3;
@@ -168,7 +181,7 @@ public class Player extends Entity {
 		}
 		for (int i = 0; i < 3; i++) {
 
-			if(y == 725 || (y == 595 && x >= 110 && x <= 1500) || (y == 465 && x >= 0 && x <= 1350)
+			if (y == 725 || (y == 595 && x >= 110 && x <= 1500) || (y == 465 && x >= 0 && x <= 1350)
 					|| (y == 335 && x >= 110 && x <= 1500) || (y == 205 && x >= 0 && x <= 1350)
 					|| (y == 75 && x >= 180 && x <= 570) || (x >= 200 && x <= 270 && y <= 725 && y >= 595)
 					|| (x >= 1200 && x <= 1270 && y <= 595 && y >= 465)
@@ -236,7 +249,7 @@ public class Player extends Entity {
 
 		}
 
-		g2.drawImage(image, x+4, y+4, gp.TileSize, gp.TileSize, null);
+		g2.drawImage(image, x + 4, y + 4, gp.TileSize, gp.TileSize, null);
 
 	}
 
