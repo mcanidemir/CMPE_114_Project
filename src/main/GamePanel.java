@@ -80,6 +80,7 @@ public class GamePanel extends JPanel implements Runnable {
 
 	public void update() {
     //game = 0 oyun başı, game = 1 oyun kazanılınca, game = 2 oyun esnasında, game = 3 oyun kaybedilince
+		GameState.update();
 
 		if (game == 2) {
 
@@ -103,7 +104,6 @@ public class GamePanel extends JPanel implements Runnable {
 			label = new JLabel();
 			label.setBounds(0, 0, 1500, 800);
 			label.addMouseListener(m);
-
 			this.add(label);
 		}
 
