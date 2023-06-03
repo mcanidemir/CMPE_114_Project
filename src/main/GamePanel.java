@@ -35,6 +35,7 @@ public class GamePanel extends JPanel implements Runnable{
 		Thread gameThread;
 		Player player = new Player(this, KeyH);
 		projectile projectile = new projectile(this);
+		Donkey donkey = new Donkey(this);
 		Sounds sound= new Sounds();
 		
 		JLabel label;
@@ -96,7 +97,7 @@ public class GamePanel extends JPanel implements Runnable{
 			}
 		
 			else {
-				
+				donkey.update();
 				player.update();					
 				projectile.update();
 
@@ -128,7 +129,7 @@ public class GamePanel extends JPanel implements Runnable{
 		    
 
 		    TileM.draw(g2);
-
+		    donkey.draw(g2);
 		    player.draw(g2);
 		    projectile.draw(g2);
 		    
