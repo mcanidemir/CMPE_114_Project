@@ -89,9 +89,9 @@ public class projectile {
 							PX.set(t, PX.get(t) - 3);
 
 						}
-						if (barrelonladder == 17) {
+						if (barrelonladder == 18) {
 							PY.set(t, PY.get(t) + 8);
-							System.out.println(Arrays.toString(ground) + Arrays.toString(ladder));
+							// System.out.println(Arrays.toString(ground) + Arrays.toString(ladder));
 							barrelonladder = 0;
 						}
 

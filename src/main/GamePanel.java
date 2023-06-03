@@ -13,7 +13,7 @@ import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-//game = 0 oyun başı, game = 1 oyun kazanılınca, game = 2 oyun esnasında, game = 3 oyun kaybedilince, game = 4 countdown
+//game = 0 oyun başı, game = 1 oyun kazanılınca, game = 2 oyun esnasında, game = 3 oyun kaybedilinec
 public class GamePanel extends JPanel implements Runnable {
 
 	final int originalTileSize = 16;
@@ -37,6 +37,7 @@ public class GamePanel extends JPanel implements Runnable {
 	Thread gameThread;
 	Player player = new Player(this, KeyH);
 	projectile projectile = new projectile(this);
+	Donkey donkey = new Donkey(this);
 	Sounds sound = new Sounds();
 
 	JLabel label;
@@ -97,7 +98,7 @@ public class GamePanel extends JPanel implements Runnable {
 			}
 
 			else {
-
+				donkey.update();
 				player.update();
 				projectile.update();
 				Col.MonkeyTouched();
@@ -127,7 +128,7 @@ public class GamePanel extends JPanel implements Runnable {
 		g2.fillRect(520, 55, 50, 70);
 
 		TileM.draw(g2);
-
+		donkey.draw(g2);
 		player.draw(g2);
 		projectile.draw(g2);
 
