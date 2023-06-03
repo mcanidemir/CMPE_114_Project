@@ -11,13 +11,13 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-
+//game = 0 oyun başı, game = 1 oyun kazanılınca, game = 2 oyun esnasında, game = 3 oyun kaybedilinec
 public class GamePanel extends JPanel implements Runnable{
 
 	
 		final int originalTileSize = 16;
 		final int scale = 3;
-		public static int game = 0;
+		public static int game = 3;
 		
 		public final int TileSize = originalTileSize * scale;
 		final int MaxScreenCol = 16;
@@ -97,8 +97,9 @@ public class GamePanel extends JPanel implements Runnable{
 		
 			else {
 				
-				player.update();
+				player.update();					
 				projectile.update();
+
 				
 			}
 			
@@ -141,6 +142,10 @@ public class GamePanel extends JPanel implements Runnable{
 		    	
 		    	GameState.gameStart(g2);
 		    	
+		    }
+		    
+		    if (game == 3) {
+		    	GameState.isLost(g2);
 		    }
 		    
 		    g2.dispose();		  
