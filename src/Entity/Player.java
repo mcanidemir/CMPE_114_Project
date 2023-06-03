@@ -58,10 +58,6 @@ public class Player extends Entity {
 			marioClimb_1 = ImageIO.read(getClass().getResourceAsStream("/Mario/Mario_backward_1.png"));
 			marioClimb_2 = ImageIO.read(getClass().getResourceAsStream("/Mario/Mario_backward_2.png"));
 
-			DonkeyLeft = ImageIO.read(getClass().getResourceAsStream("/Donkey_Kong/donkey kong left.png"));
-			DonkeyMid = ImageIO.read(getClass().getResourceAsStream("/Donkey_Kong/donkey kong mid.png"));
-			DonkeyRight = ImageIO.read(getClass().getResourceAsStream("/Donkey_Kong/donkey kong right.png"));
-
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -76,8 +72,6 @@ public class Player extends Entity {
 		} else {
 			stairs = false;
 		}
-		
-		
 
 		if (KeyH.A_pressed == true || KeyH.D_pressed == true || KeyH.W_pressed == true || KeyH.S_pressed == true) {
 
@@ -119,12 +113,12 @@ public class Player extends Entity {
 
 			if (KeyH.W_pressed == true && OnGround) {
 				if (y == 725 || y == 595 || y == 465 || y == 335 || y == 205 || y == 85) {
-                    if(!stairs) 
-                    playSE(0);
-                    }
+					if (!stairs)
+						playSE(0);
+				}
 				Timer timer = new Timer();
 				if (stairs) {
-					
+
 					ClimbCount++;
 					if (ClimbCount > 10) {
 
@@ -136,7 +130,7 @@ public class Player extends Entity {
 						ClimbCount = 0;
 						direction = "climb";
 					}
-					
+
 					timer.schedule(new TimerTask() {
 						public void run() {
 							y = y - 3;
@@ -168,7 +162,7 @@ public class Player extends Entity {
 		}
 		for (int i = 0; i < 3; i++) {
 
-			if(y == 725 || (y == 595 && x >= 110 && x <= 1500) || (y == 465 && x >= 0 && x <= 1350)
+			if (y == 725 || (y == 595 && x >= 110 && x <= 1500) || (y == 465 && x >= 0 && x <= 1350)
 					|| (y == 335 && x >= 110 && x <= 1500) || (y == 205 && x >= 0 && x <= 1350)
 					|| (y == 75 && x >= 180 && x <= 570) || (x >= 200 && x <= 270 && y <= 725 && y >= 595)
 					|| (x >= 1200 && x <= 1270 && y <= 595 && y >= 465)
@@ -236,7 +230,7 @@ public class Player extends Entity {
 
 		}
 
-		g2.drawImage(image, x+4, y+4, gp.TileSize, gp.TileSize, null);
+		g2.drawImage(image, x + 4, y + 4, gp.TileSize, gp.TileSize, null);
 
 	}
 
