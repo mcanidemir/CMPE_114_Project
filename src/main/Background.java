@@ -51,44 +51,44 @@ public class Background {
 	public void update() {
 
 		BX += 1;
-		if (BX < 1630 && BX >= 1600) {
+		if (BX < 30 && BX >= 0) {
 			direction = 0;
-		} else if (BX <= 1660 && BX >= 1630) {
+		} else if (BX <= 60 && BX >= 30) {
 			direction = 1;
-		} else if (BX <= 1690 && BX >= 1660) {
+		} else if (BX <= 90 && BX >= 60) {
 			direction = 2;
-		} else if (BX <= 1720 && BX >= 1690) {
+		} else if (BX <= 120 && BX >= 90) {
 			direction = 3;
-		} else if (BX <= 1750 && BX >= 1720) {
+		} else if (BX <= 150 && BX >= 120) {
 			direction = 4;
-		} else if (BX <= 1780 && BX >= 1750) {
+		} else if (BX <= 180 && BX >= 150) {
 			direction = 5;
-		} else if (BX <= 1810 && BX >= 1780) {
+		} else if (BX <= 210 && BX >= 180) {
 			direction = 6;
-		} else if (BX <= 1840 && BX >= 1810) {
+		} else if (BX <= 240 && BX >= 210) {
 			direction = 7;
-		} else if (BX <= 1870 && BX >= 1840) {
+		} else if (BX <= 270 && BX >= 240) {
 			direction = 8;
-		} else if (BX <= 1900 && BX >= 1870) {
+		} else if (BX <= 300 && BX >= 270) {
 			direction = 9;
-		} else if (BX <= 1930 && BX >= 1900) {
+		} else if (BX <= 330 && BX >= 300) {
 			direction = 10;
-		} else if (BX <= 1960 && BX >= 1930) {
+		} else if (BX <= 360 && BX >= 330) {
 			direction = 11;
-		} else if (BX <= 1990 && BX >= 1960) {
+		} else if (BX <= 390 && BX >= 360) {
 			direction = 12;
-		} else if (BX <= 2020 && BX >= 1990) {
+		} else if (BX <= 420 && BX >= 390) {
 			direction = 13;
-		} else if (BX <= 2050 && BX >= 2020) {
+		} else if (BX <= 450 && BX >= 420) {
 			direction = 14;
-		} else if (BX <= 2080 && BX >= 2050) {
+		} else if (BX <= 480 && BX >= 450) {
 			direction = 15;
-		} else if (BX <= 2110 && BX >= 2080) {
+		} else if (BX <= 510 && BX >= 480) {
 			direction = 16;
-		} else if (BX <= 2140 && BX >= 2110) {
+		} else if (BX <= 540 && BX >= 510) {
 			direction = 17;
 		} else {
-			BX = 1600;
+			BX = 0;
 		}
 
 	}

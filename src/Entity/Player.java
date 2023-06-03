@@ -58,10 +58,6 @@ public class Player extends Entity {
 			marioClimb_1 = ImageIO.read(getClass().getResourceAsStream("/Mario/Mario_backward_1.png"));
 			marioClimb_2 = ImageIO.read(getClass().getResourceAsStream("/Mario/Mario_backward_2.png"));
 
-			DonkeyLeft = ImageIO.read(getClass().getResourceAsStream("/Donkey_Kong/donkey kong left.png"));
-			DonkeyMid = ImageIO.read(getClass().getResourceAsStream("/Donkey_Kong/donkey kong mid.png"));
-			DonkeyRight = ImageIO.read(getClass().getResourceAsStream("/Donkey_Kong/donkey kong right.png"));
-
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

@@ -35,18 +35,18 @@ public class Donkey {
 	public void update() {
 
 		DX += 1;
-		if (DX < 1618 && DX >= 1600) {
+		if (DX < 18 && DX >= 0) {
 			direction = 1;
-		} else if (DX <= 1648 && DX >= 1618) {
+		} else if (DX <= 48 && DX >= 18) {
 			direction = 0;
-		} else if (DX <= 1666 && DX >= 1648) {
+		} else if (DX <= 66 && DX >= 48) {
 			direction = 2;
-		} else if (DX <= 1696 && DX >= 1666) {
+		} else if (DX <= 96 && DX >= 66) {
 			direction = 0;
 		} else {
-			DX = 1600;
+			DX = 0;
 		}
-		System.out.println(DX);
+		//System.out.println(DX);
 	}
 
 	public void draw(Graphics2D g2) {
