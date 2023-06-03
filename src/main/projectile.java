@@ -66,12 +66,13 @@ public class projectile {
 		Ladder L = new Ladder();
 
 		for (int k = 0; k < 26; k++) {
+			
 			L.onGround(k);
 			L.onLadder(k);
 
 		}
 
-		if (count < 10) {
+
 			for (int t = 0; t < 26; t++) {
 
 				if (ladder[t]) {
@@ -120,10 +121,7 @@ public class projectile {
 					}
 				}
 			}
-			count++;
-		} else {
-			count = 0;
-		}
+
 
 		// System.out.println(PX.get(0) + ", " + PY.get(0));
 		// System.out.println(barrelonladder);
