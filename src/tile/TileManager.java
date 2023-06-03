@@ -9,6 +9,7 @@ import javax.imageio.ImageIO;
 import main.GamePanel;
 
 public class TileManager {
+
 	GamePanel gp;
 	public Tile tile[];
 	public int mapTileNum[][];	
@@ -36,7 +37,7 @@ public class TileManager {
 			
 			
 			tile[3] = new Tile();
-			tile[3].image = ImageIO.read(getClass().getResourceAsStream("/tiles/Ladder.jpg"));
+			tile[3].image = ImageIO.read(getClass().getResourceAsStream("/tiles/Ladder.png"));
 			
 			
 			tile[4] = new Tile();

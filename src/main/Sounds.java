@@ -8,14 +8,12 @@ import javax.sound.sampled.Clip;
 public class Sounds {
 
     Clip clip;
-    URL soundURL[]=new URL[30];
+    URL soundURL[]=new URL[2];
     
 
     public Sounds() {
     soundURL[0] = getClass().getResource("/sound/smb_jump-small.wav");
-    soundURL[1] = getClass().getResource("/sound/step-floor.wav");
-    soundURL[2] = getClass().getResource("/sound/smb_mariodie.wav");
-    soundURL[3] = getClass().getResource("/sound/smb_stage_clear.wav");
+
     }
 
     public void setFile(int i) {
