@@ -18,14 +18,13 @@ public class GamePanel extends JPanel implements Runnable {
 	final int originalTileSize = 16;
 	final int scale = 3;
 	public static int game = 0;
+	int mc = 0;
 
 	public final int TileSize = originalTileSize * scale;
 	final int ScreenWidth = 1500;
 	final int ScreenHeight = 800;
 
 	int FPS = 60;
-
-
 
 	Collusion Col = new Collusion();
 	TileManager TileM = new TileManager(this);
@@ -79,7 +78,9 @@ public class GamePanel extends JPanel implements Runnable {
 	}
 
 	public void update() {
-    //game = 0 oyun başı, game = 1 oyun kazanılınca, game = 2 oyun esnasında, game = 3 oyun kaybedilince
+		// game = 0 oyun başı, game = 1 oyun kazanılınca, game = 2 oyun esnasında, game
+		// = 3 oyun kaybedilince
+
 		GameState.update();
 
 		if (game == 2) {
@@ -87,7 +88,10 @@ public class GamePanel extends JPanel implements Runnable {
 			if (Player.x <= 250 && Player.x >= 220 && Player.y == 75) {
 
 				game = 1;
-
+				if (mc == 0) {
+					playSE(2);
+					mc++;
+				}
 			}
 
 			else {
@@ -137,7 +141,10 @@ public class GamePanel extends JPanel implements Runnable {
 		if (game == 3) {
 
 			GameState.isLost(g2);
-
+			if (mc == 0) {
+				playSE(1);
+				mc++;
+			}
 		}
 
 		g2.dispose();
