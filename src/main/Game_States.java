@@ -43,10 +43,10 @@ public class Game_States {
 
 	public void gameEnd(Graphics g2) {
 		try {
-			e1 = ImageIO.read(getClass().getResourceAsStream("/others/You_Win.png"));
-			e2 = ImageIO.read(getClass().getResourceAsStream("/others/You_Win.png"));
-			e3 = ImageIO.read(getClass().getResourceAsStream("/others/You_Win.png"));
-			e4 = ImageIO.read(getClass().getResourceAsStream("/others/You_Win.png"));
+			e1 = ImageIO.read(getClass().getResourceAsStream("/others/You Win1.png"));
+			e2 = ImageIO.read(getClass().getResourceAsStream("/others/You Win2.png"));
+			e3 = ImageIO.read(getClass().getResourceAsStream("/others/You Win3.png"));
+			e4 = ImageIO.read(getClass().getResourceAsStream("/others/You Win4.png"));
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
