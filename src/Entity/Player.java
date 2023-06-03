@@ -91,22 +91,37 @@ public class Player extends Entity {
 			}
 
 			if (KeyH.S_pressed == true && stairs) {
-				for (int i = 0; i < 3; i++) {
-					if (y < 724) {
-						Timer timer = new Timer();
-						timer.schedule(new TimerTask() {
-							public void run() {
-								y = y + 2;
-							}
-						}, 100);
-					} else {
-						Timer timer = new Timer();
-						timer.schedule(new TimerTask() {
-							public void run() {
-								y = 725;
-							}
-						}, 0);
-					}
+				for (int i = 0; i < 6; i++) {
+					Timer timer = new Timer();
+					timer.schedule(new TimerTask() {
+						public void run() {
+							if(y < 724 && y >= 595) {
+	                            if (y < 724 && y >= 595) {
+	                                y = y + 1;
+	                            } else {
+	                                y = 725;
+	                            }}
+	                            if (y < 594 && y >= 465) {
+	                            if (y < 594 && y >= 465) {
+	                                y = y + 1;
+	                            } else {
+	                                y = 595;
+	                            }}
+	                            if (y < 464 && y >= 334) {
+	                            if (y < 464 && y >= 334) {
+	                                y = y + 1;
+	                            } else {
+	                                y = 465;
+	                            }}
+	                            if (y < 334 && y >= 205) {
+	                            if (y < 334 && y >= 205) {
+	                                y = y + 1;
+	                            } else {
+	                                y = 334;
+	                                }}
+						}
+					}, 100);
+
 				}
 
 			}
