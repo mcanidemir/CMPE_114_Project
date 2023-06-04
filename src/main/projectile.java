@@ -60,7 +60,7 @@ public class projectile {
 	}
 
 	
-	int arrcount = 1;
+	public static int arrcount = 1;
 
 	public void update() {
 
