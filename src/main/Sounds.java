@@ -15,7 +15,7 @@ public class Sounds {
     soundURL[0] = getClass().getResource("/sound/smb_jump-small.wav");
     soundURL[1] = getClass().getResource("/sound/smb_mariodie.wav");
     soundURL[2] = getClass().getResource("/sound/smb_stage_clear.wav");
-    soundURL[3] = getClass().getResource("/sound/smb_jump-small.wav");
+    soundURL[3] = getClass().getResource("/sound/theme.wav");
     }
 
     public void setFile(int i) {
@@ -34,6 +34,9 @@ public class Sounds {
         clip.loop(Clip.LOOP_CONTINUOUSLY);
     }
     public void stop() {
-        clip.stop();
+    	clip.flush();
+        //clip.stop();
+        
     }
+    
 }

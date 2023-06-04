@@ -7,13 +7,15 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import Entity.Player;
+
 public class Donkey {
 
 	GamePanel gp;
 	int DX = 1600;
 	int direction;
 
-	public BufferedImage DonkeyLeft, DonkeyMid, DonkeyRight;
+	public BufferedImage DonkeyLeft, DonkeyMid, DonkeyRight, DonkeyMidAngry;
 
 	public Donkey(GamePanel gp) {
 		this.gp = gp;
@@ -23,9 +25,10 @@ public class Donkey {
 
 	public void getDonkeyImage() {
 		try {
-			DonkeyLeft = ImageIO.read(getClass().getResourceAsStream("/Donkey_Kong/donkey kong left.png"));
-			DonkeyMid = ImageIO.read(getClass().getResourceAsStream("/Donkey_Kong/donkey kong mid.png"));
-			DonkeyRight = ImageIO.read(getClass().getResourceAsStream("/Donkey_Kong/donkey kong right.png"));
+			DonkeyLeft = ImageIO.read(getClass().getResourceAsStream("/Donkey_Kong/prenses_7.png"));
+			DonkeyMid = ImageIO.read(getClass().getResourceAsStream("/Donkey_Kong/prenses_12.png"));
+			DonkeyMidAngry = ImageIO.read(getClass().getResourceAsStream("/Donkey_Kong/prenses_9.png"));
+			DonkeyRight = ImageIO.read(getClass().getResourceAsStream("/Donkey_Kong/prenses_8.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -35,18 +38,18 @@ public class Donkey {
 	public void update() {
 
 		DX += 1;
-		if (DX < 18 && DX >= 0) {
-			direction = 1;
-		} else if (DX <= 48 && DX >= 18) {
-			direction = 0;
-		} else if (DX <= 66 && DX >= 48) {
+		if (DX < 30 && DX >= 0) {
 			direction = 2;
-		} else if (DX <= 96 && DX >= 66) {
+		} else if (DX <= 55 && DX >= 30) {
+			direction = 0;
+		} else if (DX <= 75 && DX >= 55) {
+			direction = 1;
+		} else if (DX <= 95 && DX >= 75) {
 			direction = 0;
 		} else {
 			DX = 0;
 		}
-		//System.out.println(DX);
+		// 19*5 6 5 4 4
 	}
 
 	public void draw(Graphics2D g2) {
@@ -55,7 +58,12 @@ public class Donkey {
 
 		switch (direction) {
 		case 0:
-			image = DonkeyMid;
+			if (Player.y <= 465) {
+				System.out.println(Player.y);
+				image = DonkeyMidAngry;
+			} else {
+				image = DonkeyMid;
+			}
 			break;
 		case 1:
 			image = DonkeyLeft;
@@ -65,7 +73,7 @@ public class Donkey {
 			break;
 		}
 
-		g2.drawImage(image, 50, 205, gp.TileSize, gp.TileSize, null);
+		g2.drawImage(image, 40, 183, 70, 70, null);
 	}
 
 }

@@ -51,6 +51,8 @@ public class GamePanel extends JPanel implements Runnable {
 	public void StartGameThread() {
 		gameThread = new Thread(this);
 		gameThread.start();
+		
+				
 	}
 
 	@Override
@@ -77,20 +79,20 @@ public class GamePanel extends JPanel implements Runnable {
 		}
 	}
 
+
 	public void update() {
 		// game = 0 oyun başı, game = 1 oyun kazanılınca, game = 2 oyun esnasında, game
 		// = 3 oyun kaybedilince
 
 		GameState.update();
-
 		if (game == 2) {
 
 			if (Player.x <= 250 && Player.x >= 220 && Player.y == 75) {
 
 				game = 1;
 				if (mc == 0) {
-					playSE(2);
 					mc++;
+					playSE(2);
 				}
 			}
 
@@ -100,7 +102,7 @@ public class GamePanel extends JPanel implements Runnable {
 				player.update();
 				projectile.update();
 				Col.MonkeyTouched();
-
+				mc=0;
 			}
 
 		} else {
@@ -110,9 +112,7 @@ public class GamePanel extends JPanel implements Runnable {
 			label.addMouseListener(m);
 			this.add(label);
 		}
-
 	}
-
 	public void paintComponent(Graphics g) {
 
 		super.paintComponent(g);
@@ -164,5 +164,6 @@ public class GamePanel extends JPanel implements Runnable {
 		sound.setFile(i);
 		sound.play();
 	}
+	
 
 }
