@@ -43,7 +43,6 @@ public class Background {
 			B18 = ImageIO.read(getClass().getResourceAsStream("/back/Şamdan18.png"));
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

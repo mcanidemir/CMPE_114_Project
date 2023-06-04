@@ -14,7 +14,7 @@ public class Game_States {
 	BufferedImage e1, e2, e3, e4;
 	int direction;
 	int G = 0;
-	
+
 	public void update() {
 		if (G < 25 && G >= 0) {
 			direction = 0;
@@ -28,7 +28,6 @@ public class Game_States {
 			G = 0;
 		}
 		G++;
-		//System.out.println(G);
 	}
 
 	public void gameStart(Graphics g2) {
@@ -65,7 +64,6 @@ public class Game_States {
 			e3 = ImageIO.read(getClass().getResourceAsStream("/others/You Win3.png"));
 			e4 = ImageIO.read(getClass().getResourceAsStream("/others/You Win4.png"));
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		image = e1;
@@ -93,7 +91,6 @@ public class Game_States {
 		projectile.barrelonladder = 0;
 	}
 
-
 	public void isLost(Graphics g2) {
 		try {
 			e1 = ImageIO.read(getClass().getResourceAsStream("/others/You-Lose1.png"));
@@ -101,7 +98,6 @@ public class Game_States {
 			e3 = ImageIO.read(getClass().getResourceAsStream("/others/You-Lose3.png"));
 			e4 = ImageIO.read(getClass().getResourceAsStream("/others/You-Lose4.png"));
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 

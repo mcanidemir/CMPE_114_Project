@@ -12,7 +12,7 @@ import Entity.Player;
 public class Donkey {
 
 	GamePanel gp;
-	int DX = 1600;
+	static int DX = 0;
 	int direction;
 
 	public BufferedImage DonkeyLeft, DonkeyMid, DonkeyRight, DonkeyMidAngry;

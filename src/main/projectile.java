@@ -25,8 +25,8 @@ public class projectile {
 	public static int stair3Y = 465;
 	public static int stair4Y = 335;
 	public static int stair5Y = 205;
-	int BarrelCount=0;
-	int BarrelNum=1;
+	int BarrelCount = 0;
+	int BarrelNum = 1;
 
 	public projectile(GamePanel gp) {
 		this.gp = gp;
@@ -37,12 +37,10 @@ public class projectile {
 	public void setDefaultValue() {
 		for (int i = 0; i < 100; i++) {
 			PX.add(AS);
-			// AS += 50;
 		}
 
 		for (int i = 0; i < 100; i++) {
 			PY.add(SA);
-			// SA += 50;
 		}
 	}
 
@@ -59,8 +57,7 @@ public class projectile {
 		}
 	}
 
-	
-	int arrcount = 1;
+	public static int arrcount = 1;
 
 	public void update() {
 
@@ -72,81 +69,74 @@ public class projectile {
 
 		}
 
+		for (int t = 0; t < 26; t++) {
 
-			for (int t = 0; t < 26; t++) {
+			if (ladder[t]) {
+				barrelonladder++;
 
-				if (ladder[t]) {
-					barrelonladder++;
-					// System.out.println(barrelonladder);
+				if (PY.get(t) == 725 || PY.get(t) == 465 || PY.get(t) == 205) {
+					PX.set(t, PX.get(t) + 3);
+
+				}
+
+				else if (PY.get(t) == 595 || PY.get(t) == stair4Y) {
+					PX.set(t, PX.get(t) - 3);
+
+				}
+				if (barrelonladder == 17) {
+					PY.set(t, PY.get(t) + 64);
+					barrelonladder = 0;
+				}
+
+			} else {
+
+				if (ground[t]) {
 
 					if (PY.get(t) == 725 || PY.get(t) == 465 || PY.get(t) == 205) {
+
 						PX.set(t, PX.get(t) + 3);
 
 					}
 
-					else if (PY.get(t) == 595 || PY.get(t) == stair4Y) {
+					else if (PY.get(t) == 595 || PY.get(t) == 335) {
+
 						PX.set(t, PX.get(t) - 3);
-
 					}
-					if (barrelonladder == 17) {
-						PY.set(t, PY.get(t) + 64);
-						// System.out.println(Arrays.toString(ground) + Arrays.toString(ladder));
-						barrelonladder = 0;
-					}
+					for (int j = 0; j < 26; j++) {
 
+						if (PX.get(j) > 1500) {
+							PX.set(t, 35);
+							PY.set(t, 205);
+						}
+					}
 				} else {
 
-					if (ground[t]) {
-
-						if (PY.get(t) == 725 || PY.get(t) == 465 || PY.get(t) == 205) {
-
-							PX.set(t, PX.get(t) + 3);
-
-						}
-
-						else if (PY.get(t) == 595 || PY.get(t) == 335) {
-
-							PX.set(t, PX.get(t) - 3);
-						}
-						for (int j = 0; j < 26; j++) {
-
-							if (PX.get(j) > 1500) {
-								PX.set(t, 35);
-								PY.set(t, 205);
-							}
-						}
-					} else {
-
-						PY.set(t, PY.get(t) + 2);
-					}
+					PY.set(t, PY.get(t) + 2);
 				}
 			}
-			BarrelCount++;
-			//System.out.println(BarrelCount);
-			if (BarrelCount > 10) {
+		}
+		BarrelCount++;
+		if (BarrelCount > 10) {
 
-				if (BarrelNum == 1) {
-					BarrelNum = 2;
-				} else if (BarrelNum == 2) {
-					BarrelNum = 1;
-				}
-				BarrelCount = 0;
+			if (BarrelNum == 1) {
+				BarrelNum = 2;
+			} else if (BarrelNum == 2) {
+				BarrelNum = 1;
 			}
+			BarrelCount = 0;
+		}
 
-		// System.out.println(PX.get(0) + ", " + PY.get(0));
-		// System.out.println(barrelonladder);
 	}
 
 	public void draw(Graphics2D g2) {
-		// TODO Auto-generated method stub
 		BufferedImage Image = null;
 		Image = barrel1;
 		switch (BarrelNum) {
 		case 1:
-			Image=barrel1;
+			Image = barrel1;
 			break;
 		case 2:
-			Image=barrel2;
+			Image = barrel2;
 			break;
 		}
 		if (PX.get(arrcount - 1) == 323 && PY.get(arrcount - 1) == 205) {

@@ -20,6 +20,7 @@ public class MouseHandler implements MouseListener {
 		// TODO Auto-generated method stub
 		GamePanel.game = 2;
 		projectile.arrcount = 1;
+		Donkey.DX = 0;
 	}
 
 	@Override

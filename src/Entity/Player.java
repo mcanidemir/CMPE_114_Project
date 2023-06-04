@@ -76,7 +76,6 @@ public class Player extends Entity {
 		if (KeyH.A_pressed == true || KeyH.D_pressed == true || KeyH.W_pressed == true || KeyH.S_pressed == true) {
 
 			if (KeyH.A_pressed == true && x > 0) {
-				// playSE(1);
 				direction = "left";
 				x -= playerSpeed_Left;
 
@@ -95,30 +94,34 @@ public class Player extends Entity {
 					Timer timer = new Timer();
 					timer.schedule(new TimerTask() {
 						public void run() {
-							if(y < 724 && y >= 595) {
-	                            if (y < 724 && y >= 595) {
-	                                y = y + 1;
-	                            } else {
-	                                y = 725;
-	                            }}
-	                            if (y < 594 && y >= 465) {
-	                            if (y < 594 && y >= 465) {
-	                                y = y + 1;
-	                            } else {
-	                                y = 595;
-	                            }}
-	                            if (y < 464 && y >= 334) {
-	                            if (y < 464 && y >= 334) {
-	                                y = y + 1;
-	                            } else {
-	                                y = 465;
-	                            }}
-	                            if (y < 334 && y >= 205) {
-	                            if (y < 334 && y >= 205) {
-	                                y = y + 1;
-	                            } else {
-	                                y = 334;
-	                                }}
+							if (y < 724 && y >= 595) {
+								if (y < 724 && y >= 595) {
+									y = y + 1;
+								} else {
+									y = 725;
+								}
+							}
+							if (y < 594 && y >= 465) {
+								if (y < 594 && y >= 465) {
+									y = y + 1;
+								} else {
+									y = 595;
+								}
+							}
+							if (y < 464 && y >= 334) {
+								if (y < 464 && y >= 334) {
+									y = y + 1;
+								} else {
+									y = 465;
+								}
+							}
+							if (y < 334 && y >= 205) {
+								if (y < 334 && y >= 205) {
+									y = y + 1;
+								} else {
+									y = 334;
+								}
+							}
 						}
 					}, 100);
 
@@ -145,10 +148,8 @@ public class Player extends Entity {
 						ClimbCount = 0;
 						direction = "climb";
 					}
-							
-							y = y - 3;
-							
 
+					y = y - 3;
 
 				} else {
 					timer.schedule(new TimerTask() {
@@ -188,7 +189,6 @@ public class Player extends Entity {
 				y += 1;
 			}
 		}
-		System.out.println(y + ", " + x);
 	}
 
 	public void draw(Graphics2D g2) {
