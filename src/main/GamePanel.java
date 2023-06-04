@@ -18,7 +18,7 @@ public class GamePanel extends JPanel implements Runnable {
 	final int originalTileSize = 16;
 	final int scale = 3;
 	public static int game = 0;
-	int mc = 0;
+	int mc = 0;// music count
 
 	public final int TileSize = originalTileSize * scale;
 	final int ScreenWidth = 1500;
@@ -51,8 +51,7 @@ public class GamePanel extends JPanel implements Runnable {
 	public void StartGameThread() {
 		gameThread = new Thread(this);
 		gameThread.start();
-		
-				
+
 	}
 
 	@Override
@@ -79,7 +78,6 @@ public class GamePanel extends JPanel implements Runnable {
 		}
 	}
 
-
 	public void update() {
 		// game = 0 oyun başı, game = 1 oyun kazanılınca, game = 2 oyun esnasında, game
 		// = 3 oyun kaybedilince
@@ -103,7 +101,7 @@ public class GamePanel extends JPanel implements Runnable {
 				player.update();
 				projectile.update();
 				Col.MonkeyTouched();
-				mc=0;
+				mc = 0;
 			}
 
 		} else {
@@ -114,6 +112,7 @@ public class GamePanel extends JPanel implements Runnable {
 			this.add(label);
 		}
 	}
+
 	public void paintComponent(Graphics g) {
 
 		super.paintComponent(g);
@@ -165,6 +164,5 @@ public class GamePanel extends JPanel implements Runnable {
 		sound.setFile(i);
 		sound.play();
 	}
-	
 
 }

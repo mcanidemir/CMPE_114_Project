@@ -12,60 +12,57 @@ public class TileManager {
 
 	GamePanel gp;
 	public Tile tile[];
-	public int mapTileNum[][];	
-	
+	public int mapTileNum[][];
+
 	public TileManager(GamePanel gp) {
-		tile = new Tile [10];
-		this.gp=gp;
-		
+		tile = new Tile[10];
+		this.gp = gp;
+
 		getTileImage();
-		
+
 	}
-	
-	
+
 	public void getTileImage() {
-		
+
 		try {
 			tile[0] = new Tile();
 			tile[0].image = ImageIO.read(getClass().getResourceAsStream("/tiles/Sprite-0003.jpg"));
-			
+
 			tile[1] = new Tile();
 			tile[1].image = ImageIO.read(getClass().getResourceAsStream("/tiles/Sprite-0004.jpg"));
-			
-			tile[2] = new Tile();			
+
+			tile[2] = new Tile();
 			tile[2].image = ImageIO.read(getClass().getResourceAsStream("/tiles/barrels.png"));
-			
-			
+
 			tile[3] = new Tile();
 			tile[3].image = ImageIO.read(getClass().getResourceAsStream("/tiles/Ladder.png"));
-			
-			
+
 			tile[4] = new Tile();
 			tile[4].image = ImageIO.read(getClass().getResourceAsStream("/others/scared_donkeykong.png"));
-			
-		}catch(IOException e) {
+
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void draw(Graphics2D g2) {
-		    	g2.drawImage(tile[0].image, 0, 775, 1500, 20, null);
-		    	g2.drawImage(tile[0].image, 150, 645, 1350, 20, null);
-		    	g2.drawImage(tile[0].image, 150, 385, 1350, 20, null);
-		    	g2.drawImage(tile[0].image, 0, 515, 1350, 20, null);
-		    	g2.drawImage(tile[0].image, 0, 255, 1350, 20, null);
-		    	
-		    	g2.drawImage(tile[1].image, 220, 125, 350, 20, null);
-		    	
-		    	g2.drawImage(tile[2].image, -20, 145, 60, 110, null);
-		    	
-		    	g2.drawImage(tile[3].image, 350, 145, 80, 110, null);
-		    	g2.drawImage(tile[3].image, 1020, 275, 80, 110, null);
-		    	g2.drawImage(tile[3].image, 400, 405, 80, 110, null);
-		    	g2.drawImage(tile[3].image, 1220, 535, 80, 110, null);
-		    	g2.drawImage(tile[3].image, 220, 665, 80, 110, null);
-		    	
-		    	g2.drawImage(tile[4].image, 235, 75, 50, 50, null);
-		    	
+		g2.drawImage(tile[0].image, 0, 775, 1500, 20, null);
+		g2.drawImage(tile[0].image, 150, 645, 1350, 20, null);
+		g2.drawImage(tile[0].image, 150, 385, 1350, 20, null);
+		g2.drawImage(tile[0].image, 0, 515, 1350, 20, null);
+		g2.drawImage(tile[0].image, 0, 255, 1350, 20, null);
+
+		g2.drawImage(tile[1].image, 220, 125, 350, 20, null);
+
+		g2.drawImage(tile[2].image, -20, 145, 60, 110, null);
+
+		g2.drawImage(tile[3].image, 350, 145, 80, 110, null);
+		g2.drawImage(tile[3].image, 1020, 275, 80, 110, null);
+		g2.drawImage(tile[3].image, 400, 405, 80, 110, null);
+		g2.drawImage(tile[3].image, 1220, 535, 80, 110, null);
+		g2.drawImage(tile[3].image, 220, 665, 80, 110, null);
+
+		g2.drawImage(tile[4].image, 235, 75, 50, 50, null);
+
 	}
 }

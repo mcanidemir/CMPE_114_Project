@@ -9,8 +9,6 @@ public class KeyHandler implements KeyListener{
 	@Override
 	public void keyTyped(KeyEvent e) {
 		// TODO Auto-generated method stub
-		//boolean jumping;
-		
 	}
 	@Override
 	public void keyPressed(KeyEvent e) {
