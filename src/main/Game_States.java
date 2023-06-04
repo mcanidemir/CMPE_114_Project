@@ -13,6 +13,23 @@ public class Game_States {
 	BufferedImage image = null;
 	BufferedImage e1, e2, e3, e4;
 	int direction;
+	int G = 0;
+	
+	public void update() {
+		if (G < 25 && G >= 0) {
+			direction = 0;
+		} else if (G <= 50 && G >= 25) {
+			direction = 1;
+		} else if (G <= 75 && G >= 50) {
+			direction = 2;
+		} else if (G <= 100 && G >= 75) {
+			direction = 3;
+		} else {
+			G = 0;
+		}
+		G++;
+		//System.out.println(G);
+	}
 
 	public void gameStart(Graphics g2) {
 		try {
@@ -76,22 +93,6 @@ public class Game_States {
 		projectile.barrelonladder = 0;
 	}
 
-	int G = 0;
-	public void update() {
-		if (G < 25 && G >= 0) {
-			direction = 0;
-		} else if (G <= 50 && G >= 25) {
-			direction = 1;
-		} else if (G <= 75 && G >= 50) {
-			direction = 2;
-		} else if (G <= 100 && G >= 75) {
-			direction = 3;
-		} else {
-			G = 0;
-		}
-		G++;
-		//System.out.println(G);
-	}
 
 	public void isLost(Graphics g2) {
 		try {
