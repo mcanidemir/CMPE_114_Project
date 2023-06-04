@@ -126,7 +126,6 @@ public class Player extends Entity {
 					}, 100);
 
 				}
-				System.out.println(KeyH.S_pressed);
 			}
 
 			if (KeyH.W_pressed == true && OnGround) {
@@ -148,7 +147,6 @@ public class Player extends Entity {
 						ClimbCount = 0;
 						direction = "climb";
 					}
-
 					y = y - 3;
 
 				} else {
