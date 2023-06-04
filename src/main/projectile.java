@@ -89,7 +89,7 @@ public class projectile {
 
 					}
 					if (barrelonladder == 17) {
-						PY.set(t, PY.get(t) + 64);
+						PY.set(t, PY.get(t) + 2);
 						// System.out.println(Arrays.toString(ground) + Arrays.toString(ladder));
 						barrelonladder = 0;
 					}

@@ -145,8 +145,10 @@ public class Player extends Entity {
 						ClimbCount = 0;
 						direction = "climb";
 					}
-							
+
 							y = y - 3;
+
+
 							
 
 
