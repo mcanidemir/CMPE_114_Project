@@ -30,6 +30,7 @@ public class GamePanel extends JPanel implements Runnable {
 	TileManager TileM = new TileManager(this);
 	KeyHandler KeyH = new KeyHandler();
 	Game_States GameState = new Game_States();
+	CountDown countdown = new CountDown(this);
 	Player player = new Player(this, KeyH);
 	projectile projectile = new projectile(this);
 	Donkey donkey = new Donkey(this);
@@ -79,12 +80,21 @@ public class GamePanel extends JPanel implements Runnable {
 	}
 
 	public void update() {
-		// game = 0 oyun başı, game = 1 oyun kazanılınca, game = 2 oyun esnasında, game
-		// = 3 oyun kaybedilince
+		// game = 0 oyun başı, game = 1 oyun kazanılınca, game = 2 oyun esnasında,
+		// game = 3 oyun kaybedilince, game = 4 countdown
 
 		GameState.update();
-		if (game == 2) {
-
+		if (game == 4) {
+			countdown.update();
+			background.update();
+			donkey.update();
+			projectile.update();
+			Col.MonkeyTouched();
+			mc = 0;
+			if (countdown.CountLoop == 1) {
+				playSE(3);
+			}
+		} else if (game == 2) {
 			if (Player.x <= 250 && Player.x >= 220 && Player.y == 75) {
 
 				game = 1;
@@ -92,13 +102,11 @@ public class GamePanel extends JPanel implements Runnable {
 					mc++;
 					playSE(2);
 				}
-			}
+			} else {
 
-			else {
-				mc = 0;
+				player.update();
 				background.update();
 				donkey.update();
-				player.update();
 				projectile.update();
 				Col.MonkeyTouched();
 				mc = 0;
@@ -136,6 +144,11 @@ public class GamePanel extends JPanel implements Runnable {
 
 			GameState.gameStart(g2);
 
+		}
+		if (game == 4) {
+			if (countdown.CountLoop == 0) {
+				countdown.draw(g2);
+			}
 		}
 
 		if (game == 3) {

@@ -18,7 +18,7 @@ public class MouseHandler implements MouseListener {
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		GamePanel.game = 2;
+		GamePanel.game = 4;
 		projectile.arrcount = 1;
 		Donkey.DX = 0;
 	}
