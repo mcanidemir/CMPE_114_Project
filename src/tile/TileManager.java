@@ -33,7 +33,7 @@ public class TileManager {
 			tile[1].image = ImageIO.read(getClass().getResourceAsStream("/tiles/Sprite-0004.jpg"));
 			
 			tile[2] = new Tile();			
-			tile[2].image = ImageIO.read(getClass().getResourceAsStream("/tiles/Barrels.jpg"));
+			tile[2].image = ImageIO.read(getClass().getResourceAsStream("/tiles/barrels.png"));
 			
 			
 			tile[3] = new Tile();
@@ -57,7 +57,7 @@ public class TileManager {
 		    	
 		    	g2.drawImage(tile[1].image, 220, 125, 350, 20, null);
 		    	
-		    	g2.drawImage(tile[2].image, 0, 145, 80, 110, null);
+		    	g2.drawImage(tile[2].image, -20, 145, 60, 110, null);
 		    	
 		    	g2.drawImage(tile[3].image, 350, 145, 80, 110, null);
 		    	g2.drawImage(tile[3].image, 1020, 275, 80, 110, null);
