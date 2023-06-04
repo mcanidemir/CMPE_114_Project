@@ -49,7 +49,6 @@ public class Donkey {
 		} else {
 			DX = 0;
 		}
-		// 19*5 6 5 4 4
 	}
 
 	public void draw(Graphics2D g2) {
@@ -59,7 +58,6 @@ public class Donkey {
 		switch (direction) {
 		case 0:
 			if (Player.y <= 465) {
-				System.out.println(Player.y);
 				image = DonkeyMidAngry;
 			} else {
 				image = DonkeyMid;
