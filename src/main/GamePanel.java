@@ -137,7 +137,7 @@ public class GamePanel extends JPanel implements Runnable {
 		if (game == 1) {
 
 			GameState.gameEnd(g2);
-
+			countdown.CountLoop =0;
 		}
 
 		if (game == 0) {
@@ -157,6 +157,7 @@ public class GamePanel extends JPanel implements Runnable {
 			if (mc == 0) {
 				playSE(1);
 				mc++;
+				countdown.CountLoop = 0;
 			}
 		}
 
