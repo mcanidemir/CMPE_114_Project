@@ -97,6 +97,7 @@ public class GamePanel extends JPanel implements Runnable {
 			}
 
 			else {
+				mc = 0;
 				background.update();
 				donkey.update();
 				player.update();
