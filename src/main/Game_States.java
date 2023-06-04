@@ -90,7 +90,7 @@ public class Game_States {
 			G = 0;
 		}
 		G++;
-		System.out.println(G);
+		//System.out.println(G);
 	}
 
 	public void isLost(Graphics g2) {

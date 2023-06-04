@@ -33,15 +33,13 @@ public class projectile {
 	}
 
 	public void setDefaultValue() {
-		for (int i = 0; i < 100; i++) {
-			PX.add(AS);
-			// AS += 50;
-		}
 
 		for (int i = 0; i < 100; i++) {
+			PX.add(AS);
 			PY.add(SA);
-			// SA += 50;
+
 		}
+
 	}
 
 	public void getPlayerImage() {
@@ -55,76 +53,92 @@ public class projectile {
 	}
 
 	int count = 0;
-	int arrcount = 1;
+	public static int arrcount = 1;
 
 	public void update() {
-		for (int i = 0; i < 1; i++) {
+		if (GamePanel.game == 2) {
 
-			Ladder L = new Ladder();
+			for (int i = 0; i < 1; i++) {
 
-			for (int k = 0; k < 26; k++) {
+				Ladder L = new Ladder();
 
-				L.onGround(k);
-				L.onLadder(k);
+				for (int k = 0; k < 26; k++) {
 
-			}
+					L.onGround(k);
+					L.onLadder(k);
 
-			if (count < 10) {
-				for (int t = 0; t < 26; t++) {
+				}
 
-					if (ladder[t]) {
-						barrelonladder++;
-						// System.out.println(barrelonladder);
+				if (count < 10) {
+					for (int t = 0; t < 26; t++) {
 
-						if (PY.get(t) == 725 || PY.get(t) == 465 || PY.get(t) == 205) {
-							PX.set(t, PX.get(t) + 3);
-
-						}
-
-						else if (PY.get(t) == 595 || PY.get(t) == stair4Y) {
-							PX.set(t, PX.get(t) - 3);
-
-						}
-						if (barrelonladder == 18) {
-							PY.set(t, PY.get(t) + 8);
-							// System.out.println(Arrays.toString(ground) + Arrays.toString(ladder));
-							barrelonladder = 0;
-						}
-
-					} else {
-
-						if (ground[t]) {
+						if (ladder[t]) {
+							barrelonladder++;
+							// System.out.println(barrelonladder);
 
 							if (PY.get(t) == 725 || PY.get(t) == 465 || PY.get(t) == 205) {
-
 								PX.set(t, PX.get(t) + 3);
 
 							}
 
-							else if (PY.get(t) == 595 || PY.get(t) == 335) {
-
+							else if (PY.get(t) == 595 || PY.get(t) == stair4Y) {
 								PX.set(t, PX.get(t) - 3);
-							}
-							for (int j = 0; j < 26; j++) {
 
-								if (PX.get(j) > 1500) {
-									PX.set(t, 62);
-									PY.set(t, 205);
-								}
 							}
+							if (barrelonladder == 18) {
+								PY.set(t, PY.get(t) + 8);
+								// System.out.println(Arrays.toString(ground) + Arrays.toString(ladder));
+								barrelonladder = 0;
+							}
+
 						} else {
 
-							PY.set(t, PY.get(t) + 2);
+							if (ground[t]) {
+
+								if (PY.get(t) == 725 || PY.get(t) == 465 || PY.get(t) == 205) {
+
+									PX.set(t, PX.get(t) + 3);
+
+								}
+
+								else if (PY.get(t) == 595 || PY.get(t) == 335) {
+
+									PX.set(t, PX.get(t) - 3);
+								}
+								for (int j = 0; j < 26; j++) {
+
+									if (PX.get(j) > 1500) {
+										PX.set(t, 62);
+										PY.set(t, 205);
+									}
+								}
+							} else {
+
+								PY.set(t, PY.get(t) + 2);
+							}
 						}
 					}
+					count++;
+				} else {
+					count = 0;
 				}
-				count++;
-			} else {
-				count = 0;
+				if (PX.get(arrcount - 1) == 314 && PY.get(arrcount - 1) == 205) {
+					for (int j = arrcount; j < 100; j++) {
+						if (PX.get(j - 1) == 314 && PY.get(j - 1) == 205) {
+							PX.set(j, 35);
+							PY.set(j, 205);
+							
+						}
+					}
+						arrcount++;
+
+					
+				}
 			}
 		}
 		// System.out.println(PX.get(0) + ", " + PY.get(0));
 		// System.out.println(barrelonladder);
+		//System.out.println(arrcount);
 	}
 
 	public void draw(Graphics2D g2) {
@@ -134,14 +148,7 @@ public class projectile {
 
 		// g2.setColor(Color.PINK);
 		// g2.fillRect(PX.get(i) + 16, PY.get(i) + 16, 50, 10);
-
-		if (PX.get(arrcount - 1) == 314 && PY.get(arrcount - 1) == 205) {
-			for (int j = arrcount; j < 26; j++) {
-				PX.set(j, 35);
-				PY.set(j, 205);
-			}
-			arrcount++;
-		}
+		
 		g2.drawImage(Image, PX.get(0) + 16, PY.get(0) + 16, 32, 32, null);
 		g2.drawImage(Image, PX.get(1) + 16, PY.get(1) + 16, 32, 32, null);
 		g2.drawImage(Image, PX.get(2) + 16, PY.get(2) + 16, 32, 32, null);
@@ -168,5 +175,6 @@ public class projectile {
 		g2.drawImage(Image, PX.get(23) + 16, PY.get(23) + 16, 32, 32, null);
 		g2.drawImage(Image, PX.get(24) + 16, PY.get(24) + 16, 32, 32, null);
 		g2.drawImage(Image, PX.get(25) + 16, PY.get(25) + 16, 32, 32, null);
+		
 	}
 }

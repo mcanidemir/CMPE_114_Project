@@ -19,6 +19,7 @@ public class MouseHandler implements MouseListener {
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
 		GamePanel.game = 2;
+		projectile.arrcount = 1;
 	}
 
 	@Override

@@ -35,17 +35,17 @@ public class Donkey {
 	public void update() {
 
 		DX += 1;
-		if (DX < 1615 && DX >= 1600) {
-			direction = 0;
-		} else if (DX <= 1640 && DX >= 1615) {
-			direction = 1;
-		} else if (DX <= 1655 && DX >= 1640) {
-			direction = 0;
-		} else if (DX <= 1680 && DX >= 1655) {
-			direction = 2;
-		} else {
-			DX = 1600;
-		}
+        if (DX < 30 && DX >= 0) {
+            direction = 1;
+        } else if (DX <= 48 && DX >= 30) {
+            direction = 0;
+        } else if (DX <= 78 && DX >= 48) {
+            direction = 2;
+        } else if (DX <= 96 && DX >= 78) {
+            direction = 0;
+        } else {
+            DX = 0;
+        }
 		// System.out.println(DX);
 	}
 

@@ -65,9 +65,9 @@ public class Player extends Entity {
 
 	public void update() {
 
-		if ((x >= 200 && x <= 270 && y <= 725 && y >= 595) || (x >= 1200 && x <= 1270 && y <= 595 && y >= 465)
-				|| (x >= 380 && x <= 450 && y <= 465 && y >= 335) || (x >= 1000 && x <= 1070 && y <= 335 && y >= 205)
-				|| (x >= 330 && x <= 400 && y <= 205 && y >= 85)) {
+		if ((x >= 200 && x <= 270 && y <= 725 && y > 595) || (x >= 1200 && x <= 1270 && y <= 595 && y > 465)
+				|| (x >= 380 && x <= 450 && y <= 465 && y > 335) || (x >= 1000 && x <= 1070 && y <= 335 && y > 205)
+				|| (x >= 330 && x <= 400 && y <= 205 && y > 85)) {
 			stairs = true;
 		} else {
 			stairs = false;
@@ -123,7 +123,7 @@ public class Player extends Entity {
 					}, 100);
 
 				}
-
+				System.out.println(KeyH.S_pressed);
 			}
 
 			if (KeyH.W_pressed == true && OnGround) {
@@ -145,12 +145,10 @@ public class Player extends Entity {
 						ClimbCount = 0;
 						direction = "climb";
 					}
-
-					timer.schedule(new TimerTask() {
-						public void run() {
+							
 							y = y - 3;
-						}
-					}, 100);
+							
+
 
 				} else {
 					timer.schedule(new TimerTask() {
@@ -190,7 +188,7 @@ public class Player extends Entity {
 				y += 1;
 			}
 		}
-
+		System.out.println(y + ", " + x);
 	}
 
 	public void draw(Graphics2D g2) {
