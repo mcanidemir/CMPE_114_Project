@@ -1,5 +1,5 @@
 package main;
-
+//asdk
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -35,6 +35,7 @@ public class CountDown {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 	}
 
 	public void update() {

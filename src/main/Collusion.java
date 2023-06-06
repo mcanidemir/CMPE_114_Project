@@ -1,5 +1,6 @@
 package main;
 
+
 import Entity.Player;
 
 public class Collusion {
